@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  /* Example custom font */
+}
+
+.nav-active {
+  color: black;
+  font-weight: bold;
+}

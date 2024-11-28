@@ -1,24 +1,36 @@
-import { useState } from 'react'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Portfolio from './pages/Portfolio';
+import Contact from './pages/Contact';
+import { NavBar } from '../common'
+const App: React.FC = () => {
   return (
-    <>
-      <h1>Welcome to my website!</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <div>
+        <NavBar
+          isNavBarOpen={false}
+          brandName="Gita Faiman"
+          imageSrcPath="/g_favicon.png"
+          navItems={[
+            { label: "Home", path: "/" },
+            { label: "About", path: "/about" },
+            { label: "Portfolio", path: "/portfolio" },
+            { label: "Contact", path: "/contact" },
+          ]}
+        />
 
-export default App
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
+
