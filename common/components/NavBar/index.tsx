@@ -1,34 +1,45 @@
-import React, { useState } from 'react';
-import { styles } from './styles';
+import React from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarButton,
+  NavbarLinks,
+  NavbarLogo,
+  NavbarPlaceholder,
+  NavbarTitle,
+} from "./styles";
 
 interface NavBarProps {
-  isNavBarOpen: boolean;
   brandName: string;
   imageSrcPath: string;
   navItems: { label: string; path: string }[];
 }
 
-const NavBar: React.FC<NavBarProps> = ({ isNavBarOpen, brandName, imageSrcPath, navItems }) => {
-  const [menuOpen, setMenuOpen] = useState(isNavBarOpen);
-
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
+const NavBar: React.FC<NavBarProps> = ({
+  brandName,
+  imageSrcPath,
+  navItems,
+}) => {
   return (
-    <header style={styles.navbar}>
-      <div style={styles.navbarBrand}>
-        <img src={imageSrcPath} alt={`${brandName} logo`} style={styles.navbarLogo} />
-        <span style={styles.navbarTitle}>{brandName}</span>
-      </div>
-      <nav style={styles.navbarLinks}>
-        {navItems.map((item, index) => (
-          <button key={index} style={styles.navbarButton} onClick={() => window.location.href = item.path}>
-            {item.label}
-          </button>
-        ))}
-      </nav>
-    </header >
+    <>
+      <Navbar>
+        <NavbarBrand>
+          <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} />
+          <NavbarTitle>{brandName}</NavbarTitle>
+        </NavbarBrand>
+        <NavbarLinks>
+          {navItems.map((item, index) => (
+            <NavbarButton
+              key={index}
+              onClick={() => (window.location.href = item.path)}
+            >
+              {item.label}
+            </NavbarButton>
+          ))}
+        </NavbarLinks>
+      </Navbar>
+      <NavbarPlaceholder />
+    </>
   );
 };
 

@@ -10,7 +10,6 @@ const App: React.FC = () => {
     <Router>
       <div>
         <NavBar
-          isNavBarOpen={false}
           brandName="Gita Faiman"
           imageSrcPath="/g_favicon.png"
           navItems={[
