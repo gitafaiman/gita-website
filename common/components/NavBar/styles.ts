@@ -1,15 +1,47 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* Bright white text */
+  }
+
+  #root {
+    height: 100%;
+  }
+`;
+
+const AppContainer = styled.div`
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* Bright white text */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+`;
 
 const Navbar = styled.header`
   position: fixed;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 2rem); /* Ensure consistent padding on the sides */
-  max-width: 1200px; /* Prevent excessive stretching on large screens */
-  padding: 1rem 2rem; /* Internal padding for content */
-  background-color: #333;
-  border-radius: 12px;
+  width: calc(100% - 1rem);
+  max-width: 1600px;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(
+    90deg,
+    #a0cbd6,
+    #b8ded2
+  ); /* Darker ombre effect */
+  border-radius: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
@@ -17,37 +49,53 @@ const Navbar = styled.header`
   z-index: 1000;
 
   @media (max-width: 1300px) {
-    padding: 1rem 1rem; /* Adjust padding for smaller screens */
-    width: calc(100% - 3rem); /* Adjust width for smaller devices */
+    padding: 1rem 1rem;
+    width: calc(100% - 3rem);
   }
   @media (max-width: 380px) {
-    padding: 0.5rem; /* Reduce padding */
-    gap: 0.25rem; /* Add spacing between elements if necessary */
+    padding: 0.5rem;
+    gap: 0.25rem;
   }
 `;
 
 const NavbarPlaceholder = styled.div`
-  height: 80px; /* Same height as Navbar for spacing */
+  height: 80px;
   width: 100%;
 `;
 
 const NavbarBrand = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
+  padding-left: 100px;
 
   @media (max-width: 768px) {
-    gap: 0.25rem; /* Reduce gap for smaller screens */
+    gap: 0.25rem;
+    padding-left: 70px;
   }
 `;
 
 const NavbarLogo = styled.img`
-  width: 40px;
-  height: 40px;
-  margin-right: 0.5rem;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: -10%;
+  top: 50%;
+  transform: translateY(-50%);
+  mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
 
   @media (max-width: 768px) {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
   }
 `;
 
@@ -55,7 +103,6 @@ const NavbarTitle = styled.span`
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: bold;
-
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -68,26 +115,30 @@ const NavbarLinks = styled.nav`
   @media (max-width: 768px) {
     gap: 0.25rem;
   }
+
+  @media (max-width: 420px) {
+    gap: 0.1rem;
+  }
 `;
 
 const NavbarButton = styled.button<{ isContact?: boolean }>`
   position: relative;
-  padding: ${(props) => (props.isContact ? "0.5rem 1.5rem" : "0.5rem 1rem")};
+  padding: ${(props) => (props.isContact ? "0.75rem 2rem" : "0.75rem 1.5rem")};
   border-radius: 50px;
-  background-color: ${(props) => (props.isContact ? "transparent" : "#555")};
-  color: ${(props) => (props.isContact ? "#555" : "#ffffff")};
-  border: ${(props) => (props.isContact ? "2px solid #555" : "none")};
+  background-color: transparent;
+  color: #ffffff;
+  border: ${(props) => (props.isContact ? "2px solid #ffffff" : "none")};
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.125rem;
   overflow: hidden;
   transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
+    background-color: #a0cbd6;
     color: #ffffff;
     transform: scale(1.05);
   }
 
-  /* For animated background hover effect */
   &::before {
     content: "";
     position: absolute;
@@ -95,40 +146,39 @@ const NavbarButton = styled.button<{ isContact?: boolean }>`
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: ${(props) => (props.isContact ? "#555" : "#777")};
+    background-color: #a0cbd6;
     z-index: -1;
     transition: width 0.4s ease-in-out;
   }
 
   &:hover::before {
-    width: 100%; /* Fill the background */
+    width: 100%;
   }
 
-  /* Special Contact button styles */
   ${(props) =>
     props.isContact &&
-    `
-    &:hover {
-      background-color: #555; /* Fills the outlined button */
+    `&:hover {
+      background-color: #a0cbd6;
     }
     &:hover::before {
-      width: 0%; /* No animated background for the Contact button */
-    }
-  `}
+      width: 0%;
+    }`}
 
   @media (max-width: 768px) {
-    padding: ${(props) => (props.isContact ? "0.4rem 1rem" : "0.4rem 0.8rem")};
-    font-size: 0.875rem;
+    padding: ${(props) => (props.isContact ? "0.5rem 1.5rem" : "0.5rem 1rem")};
+    font-size: 1rem;
   }
 
-  @media (max-width: 380px) {
+  @media (max-width: 420px) {
     padding: ${(props) =>
-      props.isContact ? "0.3rem 0.8rem" : "0.3rem 0.6rem"};
-    font-size: 0.75rem;
+      props.isContact ? "0.4rem 1.2rem" : "0.4rem 0.9rem"};
+    font-size: 0.875rem;
   }
 `;
 
 export {
+  AppContainer,
+  GlobalStyle,
   Navbar,
   NavbarBrand,
   NavbarButton,
