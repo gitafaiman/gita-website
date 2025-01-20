@@ -1,21 +1,74 @@
-import React from 'react';
+import React from "react";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import {
+  AboutCard,
+  AboutContainer,
+  Cta,
+  Heading,
+  Paragraph,
+  ProfilePic,
+  SocialIcon,
+  SocialLinks,
+} from "../../common/components/NavBar/styles";
+import useQuerySection from "../../common/hooks/useQuerySection";
 
 const About: React.FC = () => {
+  // Use the custom hook to reset the query to the Contact section
+  const { updateSection } = useQuerySection();
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">About Me</h1>
-      <div className="max-w-2xl text-gray-600 text-center">
-        <p className="mb-4">
-          Hi, I'm <span className="text-gray-900 font-semibold">[Your Name]</span>, a passionate developer with a love for crafting modern and responsive web applications. My journey into web development started with a curiosity about how the internet works and has since grown into a full-fledged passion for creating beautiful and functional digital experiences.
-        </p>
-        <p className="mb-4">
-          I specialize in <span className="font-medium text-gray-800">React, TypeScript, and modern front-end frameworks</span>. Beyond coding, I enjoy exploring new technologies, solving problems, and continuously learning to stay ahead in this dynamic field.
-        </p>
-        <p>
-          When I'm not coding, you can find me [insert hobbies/interests like "reading, hiking, or experimenting with photography"].
-        </p>
-      </div>
-    </div>
+    <AboutContainer>
+      <AboutCard>
+        <ProfilePic src="/profile.jpg" alt="Gita Faiman" />
+        <Heading>Hi! I’m Gita Faiman</Heading>
+        <Paragraph>
+          I’m the developer behind this website. <br />A passionate full-stack
+          developer-in-training, always exploring new ways to bring creativity
+          and functionality together through code.
+        </Paragraph>
+        <Paragraph>
+          From crafting clean designs to solving tricky problems, I love the
+          challenge of turning ideas into interactive experiences.
+        </Paragraph>
+        <Paragraph>
+          When I’m not coding, you’ll find me diving into new languages (both
+          spoken and programming) or enjoying some downtime with a good book and
+          coffee.
+        </Paragraph>
+        <Cta>
+          <span
+            onClick={() => updateSection("contact")}
+            style={{ color: "#a0cbd6", cursor: "pointer" }}
+          >
+            Thanks for stopping by—take a look around and feel free to reach
+            out!
+          </span>
+        </Cta>
+        <SocialLinks>
+          <SocialIcon
+            href="https://github.com/gitafaiman"
+            target="_blank"
+            title="GitHub"
+          >
+            <FaGithub size={30} />
+          </SocialIcon>
+          <SocialIcon
+            href="https://www.linkedin.com/in/reachglevin/"
+            target="_blank"
+            title="LinkedIn"
+          >
+            <FaLinkedin size={30} />
+          </SocialIcon>
+          <SocialIcon
+            href="mailto:reachglevin@gmail.com"
+            target="_blank"
+            title="Email"
+          >
+            <FaEnvelope size={30} />
+          </SocialIcon>
+        </SocialLinks>
+      </AboutCard>
+    </AboutContainer>
   );
 };
 

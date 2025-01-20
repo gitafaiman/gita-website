@@ -1,4 +1,5 @@
 import React from "react";
+import useQuerySection from "../../hooks/useQuerySection";
 import {
   Navbar,
   NavbarBrand,
@@ -20,6 +21,9 @@ const NavBar: React.FC<NavBarProps> = ({
   imageSrcPath,
   navItems,
 }) => {
+  const { getActiveSection, updateSection } = useQuerySection();
+  const activeSection = getActiveSection();
+
   return (
     <>
       <Navbar>
@@ -31,7 +35,16 @@ const NavBar: React.FC<NavBarProps> = ({
           {navItems.map((item, index) => (
             <NavbarButton
               key={index}
-              onClick={() => (window.location.href = item.path)}
+              onClick={() =>
+                updateSection(item.path === "/" ? "home" : item.path.slice(1))
+              }
+              style={{
+                border:
+                  activeSection ===
+                  (item.path === "/" ? "home" : item.path.slice(1))
+                    ? "2px solid white"
+                    : "none",
+              }}
             >
               {item.label}
             </NavbarButton>

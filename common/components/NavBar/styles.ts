@@ -12,6 +12,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: #121212; /* Dark background */
     color: #ffffff; /* Bright white text */
   }
+html {
+  scroll-behavior: smooth;
+}
 
   #root {
     height: 100%;
