@@ -179,9 +179,104 @@ const NavbarButton = styled.button<{ isContact?: boolean }>`
   }
 `;
 
+const AboutContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #121212; /* Match dark background */
+`;
+
+const AboutCard = styled.div`
+  max-width: 800px;
+  width: 100%;
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+`;
+
+const ProfilePic = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+`;
+
+const Heading = styled.h1`
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 1rem;
+`;
+
+const Paragraph = styled.p`
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #dcdcdc;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const Cta = styled.p`
+  font-size: 1.25rem;
+  color: #a0cbd6;
+  font-weight: bold;
+  margin-top: 1.5rem;
+`;
+
+const SocialLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+`;
+
+const SocialIcon = styled.a`
+  color: #333;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #a0cbd6; /* Hover color for icons */
+  }
+
+  svg {
+    transition: transform 0.3s;
+  }
+
+  &:hover svg {
+    transform: scale(1.1); /* Slightly enlarge icon on hover */
+  }
+`;
+
 export {
+  AboutCard,
+  AboutContainer,
   AppContainer,
+  Cta,
   GlobalStyle,
+  Heading,
   Navbar,
   NavbarBrand,
   NavbarButton,
@@ -189,4 +284,8 @@ export {
   NavbarLogo,
   NavbarPlaceholder,
   NavbarTitle,
+  Paragraph,
+  ProfilePic,
+  SocialIcon,
+  SocialLinks,
 };

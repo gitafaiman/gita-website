@@ -4,18 +4,16 @@ const useQuerySection = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Extract the current section from the query or default to 'home'
   const getActiveSection = () => {
-    const path = location.pathname.slice(1); // Remove leading slash
-    return path || "home"; // Default to 'home' if no query is set
+    const path = location.pathname.slice(1);
+    return path || "home";
   };
 
-  // Update the query to reflect the active section
   const updateSection = (sectionId: string) => {
     if (sectionId === "home") {
-      navigate(`/`, { replace: true }); // Remove the query for the home section
+      navigate(`/`, { replace: true });
     } else {
-      navigate(`/${sectionId}`, { replace: true }); // Add the section path to the query
+      navigate(`/${sectionId}`, { replace: true });
     }
   };
 

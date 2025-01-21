@@ -11,12 +11,12 @@ const Home: React.FC = () => {
   // Scroll to the active section on load
   useEffect(() => {
     const element = document.getElementById(activeSection || "home");
-    const navbarHeight = document.querySelector("header")?.offsetHeight || 0; // Adjust for NavBar height
+    const navbarHeight = document.querySelector("header")?.offsetHeight || 0;
 
     if (element) {
       const elementPosition =
         element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navbarHeight - 10; // Add some margin
+      const offsetPosition = elementPosition - navbarHeight - 10;
 
       window.scrollTo({
         top: offsetPosition,
