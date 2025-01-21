@@ -8,7 +8,6 @@ const Home: React.FC = () => {
   const { getActiveSection, updateSection } = useQuerySection();
   const activeSection = getActiveSection();
 
-  // Scroll handler
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section");
@@ -29,7 +28,7 @@ const Home: React.FC = () => {
       }
 
       if (!found && getActiveSection() !== "") {
-        updateSection(""); // Default to home if no section is found
+        updateSection("");
       }
     };
 

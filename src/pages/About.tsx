@@ -13,7 +13,6 @@ import {
 import useQuerySection from "../../common/hooks/useQuerySection";
 
 const About: React.FC = () => {
-  // Use the custom hook to reset the query to the Contact section
   const { updateSection } = useQuerySection();
 
   return (
