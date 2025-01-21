@@ -5,25 +5,39 @@ import Contact from "./Contact";
 import Portfolio from "./Portfolio";
 
 const Home: React.FC = () => {
-  const { getActiveSection } = useQuerySection();
+  const { getActiveSection, updateSection } = useQuerySection();
   const activeSection = getActiveSection();
 
-  // Scroll to the active section on load
+  // Scroll handler
   useEffect(() => {
-    const element = document.getElementById(activeSection || "home");
-    const navbarHeight = document.querySelector("header")?.offsetHeight || 0;
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section");
+      let found = false;
 
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navbarHeight - 10;
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (
+          rect.top <= window.innerHeight * 0.5 &&
+          rect.bottom >= window.innerHeight * 0.5
+        ) {
+          if (getActiveSection() !== section.id) {
+            updateSection(section.id);
+          }
+          found = true;
+          break;
+        }
+      }
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  }, [activeSection]);
+      if (!found && getActiveSection() !== "") {
+        updateSection(""); // Default to home if no section is found
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [getActiveSection, updateSection]);
 
   return (
     <div>

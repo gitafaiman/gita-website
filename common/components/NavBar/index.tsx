@@ -24,6 +24,24 @@ const NavBar: React.FC<NavBarProps> = ({
   const { getActiveSection, updateSection } = useQuerySection();
   const activeSection = getActiveSection();
 
+  const handleNavClick = (path: string) => {
+    updateSection(path === "/" ? "home" : path.slice(1));
+    const element = document.getElementById(
+      path === "/" ? "home" : path.slice(1)
+    );
+    if (element) {
+      const navbarHeight = document.querySelector("header")?.offsetHeight || 0;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - navbarHeight - 10;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <>
       <Navbar>
@@ -35,9 +53,7 @@ const NavBar: React.FC<NavBarProps> = ({
           {navItems.map((item, index) => (
             <NavbarButton
               key={index}
-              onClick={() =>
-                updateSection(item.path === "/" ? "home" : item.path.slice(1))
-              }
+              onClick={() => handleNavClick(item.path)}
               style={{
                 border:
                   activeSection ===
