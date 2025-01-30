@@ -130,11 +130,11 @@ const NavbarButton = styled.button<{ isContact?: boolean }>`
   border-radius: 50px;
   background-color: transparent;
   color: #ffffff;
-  border: ${(props) => (props.isContact ? "2px solid #ffffff" : "none")};
+  border: ${(isContact) => (isContact ? "2px solid #ffffff" : "none")};
   cursor: pointer;
   font-size: 1.125rem;
   overflow: hidden;
-  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease;
 
   &:hover {
     background-color: #a0cbd6;

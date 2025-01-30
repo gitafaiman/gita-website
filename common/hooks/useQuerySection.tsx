@@ -8,7 +8,6 @@ const useQuerySection = () => {
     const path = location.pathname.slice(1);
     return path || "home";
   };
-
   const updateSection = (sectionId: string) => {
     if (sectionId === "home") {
       navigate(`/`, { replace: true });
