@@ -45,7 +45,7 @@ const NavBar: React.FC<NavBarProps> = ({
   return (
     <>
       <Navbar>
-        <NavbarBrand>
+        <NavbarBrand onClick={() => handleNavClick("/")}>
           <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} />
           <NavbarTitle>{brandName}</NavbarTitle>
         </NavbarBrand>

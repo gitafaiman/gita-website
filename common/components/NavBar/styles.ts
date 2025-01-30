@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
   }
 
   html, body {
@@ -71,6 +72,7 @@ const NavbarBrand = styled.div`
   align-items: center;
   position: relative;
   padding-left: 100px;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     gap: 0.25rem;
