@@ -1,4 +1,12 @@
 import React, { useEffect } from "react";
+import {
+  GifContainer,
+  HomeHeading,
+  HomeSection,
+  PageContainer,
+  SectionWrapper,
+  TextContainer,
+} from "../../common/components/NavBar/styles";
 import useQuerySection from "../../common/hooks/useQuerySection";
 import About from "./About";
 import Contact from "./Contact";
@@ -67,57 +75,32 @@ const Home: React.FC = () => {
   }, [getActiveSection, updateSection]);
 
   return (
-    <div>
-      <section
-        id="home"
-        style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "20px",
-          backgroundColor: "#121212",
-          color: "white",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            maxWidth: "80%",
-          }}
-        >
-          <img
-            src="/home.gif"
-            alt="Welcome GIF"
-            style={{
-              width: "650px",
-              height: "650px",
-              marginRight: "20px",
-            }}
-          />
+    <PageContainer>
+      <SectionWrapper id="home">
+        <HomeSection>
+          <GifContainer>
+            <img src="/home.gif" alt="Welcome GIF" />
+          </GifContainer>
+          <TextContainer>
+            <HomeHeading>Welcome to Gita Faiman's Personal Website</HomeHeading>
+            <p>Explore my portfolio, learn about me, and get in touch.</p>
+          </TextContainer>
+        </HomeSection>
+      </SectionWrapper>
 
-          {/* Heading and Text */}
-          <div>
-            <h1>Welcome to Gita Faiman's Personal Website</h1>
-            <p style={{ marginTop: "20px", fontSize: "1.2rem" }}>
-              Explore my portfolio, learn about me, and get in touch.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" style={{ height: "100vh", padding: "20px" }}>
+      <SectionWrapper id="about" style={{ height: "100vh", padding: "20px" }}>
         <About />
-      </section>
-      <section id="portfolio" style={{ height: "100vh", padding: "20px" }}>
+      </SectionWrapper>
+      <SectionWrapper
+        id="portfolio"
+        style={{ height: "100vh", padding: "20px" }}
+      >
         <Portfolio />
-      </section>
-      <section id="contact" style={{ height: "100vh", padding: "20px" }}>
+      </SectionWrapper>
+      <SectionWrapper id="contact" style={{ height: "100vh", padding: "20px" }}>
         <Contact />
-      </section>
-    </div>
+      </SectionWrapper>
+    </PageContainer>
   );
 };
 

@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-* {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,26 +10,54 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {
     height: 100%;
-    background-color: #121212; /* Dark background */
-    color: #ffffff; /* Bright white text */
+    background-color: #121212;
+    color: #ffffff;
+    padding: 20px;
   }
-html {
-  scroll-behavior: smooth;
-}
+
+  html {
+    scroll-behavior: smooth;
+  }
 
   #root {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 `;
 
+const PageContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const SectionWrapper = styled.section`
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const AppContainer = styled.div`
-  background-color: #121212; /* Dark background */
-  color: #ffffff; /* Bright white text */
+  background-color: #121212;
+  color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 `;
 
 const Navbar = styled.header`
@@ -181,13 +209,85 @@ const NavbarButton = styled.button<{ isContact?: boolean }>`
   }
 `;
 
+const HomeSection = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 20px;
+  background-color: #121212;
+  color: white;
+  margin: 0 auto;
+
+  @media (max-width: 1030px) {
+    flex-direction: column;
+    padding: 0 15px;
+  }
+`;
+
+const GifContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  width: 100%;
+
+  img {
+    width: 650px;
+    height: 650px;
+
+    @media (max-width: 1030px) {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 1030px) {
+    margin-bottom: 20px;
+  }
+`;
+
+const HomeHeading = styled.h1`
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: left;
+
+  @media (max-width: 1030px) {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    @media (max-width: 1030px) {
+      font-size: 1rem;
+    }
+  }
+`;
+
 const AboutContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
-  background-color: #121212; /* Match dark background */
+  background-color: #121212;
 `;
 
 const AboutCard = styled.div`
@@ -260,7 +360,7 @@ const SocialIcon = styled.a`
   transition: color 0.3s;
 
   &:hover {
-    color: #a0cbd6; /* Hover color for icons */
+    color: #a0cbd6;
   }
 
   svg {
@@ -268,7 +368,7 @@ const SocialIcon = styled.a`
   }
 
   &:hover svg {
-    transform: scale(1.1); /* Slightly enlarge icon on hover */
+    transform: scale(1.1);
   }
 `;
 
@@ -277,8 +377,11 @@ export {
   AboutContainer,
   AppContainer,
   Cta,
+  GifContainer,
   GlobalStyle,
   Heading,
+  HomeHeading,
+  HomeSection,
   Navbar,
   NavbarBrand,
   NavbarButton,
@@ -286,8 +389,11 @@ export {
   NavbarLogo,
   NavbarPlaceholder,
   NavbarTitle,
+  PageContainer,
   Paragraph,
   ProfilePic,
+  SectionWrapper,
   SocialIcon,
   SocialLinks,
+  TextContainer,
 };
