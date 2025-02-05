@@ -70,9 +70,10 @@ const Navbar = styled.header`
   padding: 2rem 2.5rem;
   background: linear-gradient(
     90deg,
-    #a0cbd6,
-    #b8ded2
-  ); /* Darker ombre effect */
+    rgba(160, 203, 214, 0.9),
+    rgba(184, 222, 210, 0.9)
+  );
+
   border-radius: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -214,7 +215,7 @@ const HomeSection = styled.section`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 0 20px;
+  padding: 20px;
   background-color: #121212;
   color: white;
   margin: 0 auto;
