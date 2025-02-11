@@ -11,6 +11,7 @@ import {
   SocialLinks,
 } from "../../common/components/NavBar/styles";
 import useQuerySection from "../../common/hooks/useQuerySection";
+import scrollToSection from "../../common/utils/scrollToSection";
 
 const About: React.FC = () => {
   const { updateSection } = useQuerySection();
@@ -22,8 +23,8 @@ const About: React.FC = () => {
         <Heading>Hi! I’m Gita Faiman</Heading>
         <Paragraph>
           I’m the developer behind this website. <br />A passionate full-stack
-          developer-in-training, always exploring new ways to bring creativity
-          and functionality together through code.
+          developer, always exploring new ways to bring creativity and
+          functionality together through code.
         </Paragraph>
         <Paragraph>
           From crafting clean designs to solving tricky problems, I love the
@@ -36,7 +37,7 @@ const About: React.FC = () => {
         </Paragraph>
         <Cta>
           <span
-            onClick={() => updateSection("contact")}
+            onClick={() => scrollToSection("/contact", updateSection)}
             style={{ color: "#a0cbd6", cursor: "pointer" }}
           >
             Thanks for stopping by—take a look around and feel free to reach

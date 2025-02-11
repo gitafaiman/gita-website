@@ -39,12 +39,10 @@ const Home: React.FC = () => {
       }
 
       if (ignoreUpdates && scrollSpeed <= SCROLL_THRESHOLD) {
-        // Resuming updates when scrolling slows down
         ignoreUpdates = false;
       }
 
       if (!ignoreUpdates) {
-        // Normal section update logic
         const sections = document.querySelectorAll("section");
         let found = false;
 
@@ -88,16 +86,13 @@ const Home: React.FC = () => {
         </HomeSection>
       </SectionWrapper>
 
-      <SectionWrapper id="about" style={{ height: "100vh", padding: "20px" }}>
+      <SectionWrapper id="about">
         <About />
       </SectionWrapper>
-      <SectionWrapper
-        id="portfolio"
-        style={{ height: "100vh", padding: "20px" }}
-      >
+      <SectionWrapper id="portfolio">
         <Portfolio />
       </SectionWrapper>
-      <SectionWrapper id="contact" style={{ height: "100vh", padding: "20px" }}>
+      <SectionWrapper id="contact">
         <Contact />
       </SectionWrapper>
     </PageContainer>

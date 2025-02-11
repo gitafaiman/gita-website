@@ -10,13 +10,26 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {
     height: 100%;
+    width: 100%;
     background-color: #121212;
     color: #ffffff;
     padding: 20px;
   }
 
+  body {
+    max-width: 100vw; 
+    overflow-x: hidden; 
+  }
+
+  body, html {
+    position: relative;
+  }
+
   html {
     scroll-behavior: smooth;
+     width: 100%;
+    height: 100%;
+
   }
 
   #root {
@@ -33,17 +46,35 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 5%; /* Adds consistent padding on both sides */
+  overflow-x: hidden; /* Prevents horizontal scrolling issues */
 `;
 
 const SectionWrapper = styled.section`
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
-  padding: 20px;
+  padding: 60px 20px;
   margin: 0 auto;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 50px 15px;
+    min-height: calc(100vh - 60px);
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 10px;
+    min-height: calc(100vh - 50px);
+  }
 `;
 
 const AppContainer = styled.div`
@@ -214,11 +245,12 @@ const HomeSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: auto;
   padding: 20px;
   background-color: #121212;
   color: white;
   margin: 0 auto;
+  text-align: center;
 
   @media (max-width: 1030px) {
     flex-direction: column;
@@ -232,6 +264,7 @@ const GifContainer = styled.div`
   align-items: center;
   margin-right: 10px;
   width: 100%;
+  margin-bottom: 20px;
 
   img {
     width: 650px;
@@ -267,6 +300,8 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 
   h1 {
     margin-bottom: 20px;
@@ -286,7 +321,6 @@ const AboutContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 2rem;
   background-color: #121212;
 `;
@@ -306,7 +340,7 @@ const AboutCard = styled.div`
 
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 30px 15px rgba(160, 203, 214, 0.6); /* Glowing shadow effect */
   }
 
   @media (max-width: 768px) {

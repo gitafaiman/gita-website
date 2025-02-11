@@ -1,5 +1,6 @@
 import React from "react";
 import useQuerySection from "../../hooks/useQuerySection";
+import scrollToSection from "../../utils/scrollToSection";
 import {
   Navbar,
   NavbarBrand,
@@ -24,28 +25,10 @@ const NavBar: React.FC<NavBarProps> = ({
   const { getActiveSection, updateSection } = useQuerySection();
   const activeSection = getActiveSection();
 
-  const handleNavClick = (path: string) => {
-    updateSection(path === "/" ? "home" : path.slice(1));
-    const element = document.getElementById(
-      path === "/" ? "home" : path.slice(1)
-    );
-    if (element) {
-      const navbarHeight = document.querySelector("header")?.offsetHeight || 0;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navbarHeight - 10;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <>
       <Navbar>
-        <NavbarBrand onClick={() => handleNavClick("/")}>
+        <NavbarBrand onClick={() => scrollToSection("/", updateSection)}>
           <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} />
           <NavbarTitle>{brandName}</NavbarTitle>
         </NavbarBrand>
@@ -53,7 +36,7 @@ const NavBar: React.FC<NavBarProps> = ({
           {navItems.map((item, index) => (
             <NavbarButton
               key={index}
-              onClick={() => handleNavClick(item.path)}
+              onClick={() => scrollToSection(item.path, updateSection)}
               style={{
                 border:
                   activeSection ===
