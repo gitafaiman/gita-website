@@ -2,6 +2,28 @@ import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {
+  /* Hide scrollbar track */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Scrollbar thumb (the draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: #333; /* Dark color */
+    border-radius: 10px;
+  }
+
+  /* Scrollbar track */
+  ::-webkit-scrollbar-track {
+    background: #121212; /* Slightly lighter than background */
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #333 #121212;
+  }
+    
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
+  overflow-x: hidden; 
     height: 100%;
     width: 100%;
     background-color: #121212;
@@ -43,13 +66,10 @@ const GlobalStyle = createGlobalStyle`
 
 const PageContainer = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding: 0 5%;
   box-sizing: border-box;
-  padding: 0 5%; /* Adds consistent padding on both sides */
-  overflow-x: hidden; /* Prevents horizontal scrolling issues */
 `;
 
 const SectionWrapper = styled.section`
