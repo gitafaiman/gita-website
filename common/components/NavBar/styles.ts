@@ -31,17 +31,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-  overflow-x: hidden; 
+    overflow-x: hidden;
     height: 100%;
     width: 100%;
     background-color: #121212;
     color: #ffffff;
-    padding: 20px;
   }
 
   body {
-    max-width: 100vw; 
-    overflow-x: hidden; 
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   body, html {
