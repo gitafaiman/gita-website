@@ -407,6 +407,28 @@ const SocialIcon = styled.a`
   }
 `;
 
+const UnderlineAnimation = styled.span`
+  position: relative;
+  cursor: pointer;
+  color: #a0cbd6;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #a0cbd6;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+  }
+`;
 export {
   AboutCard,
   AboutContainer,
@@ -431,4 +453,5 @@ export {
   SocialIcon,
   SocialLinks,
   TextContainer,
+  UnderlineAnimation,
 };

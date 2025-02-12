@@ -9,6 +9,7 @@ import {
   ProfilePic,
   SocialIcon,
   SocialLinks,
+  UnderlineAnimation,
 } from "../../common/components/NavBar/styles";
 import useQuerySection from "../../common/hooks/useQuerySection";
 import scrollToSection from "../../common/utils/scrollToSection";
@@ -36,14 +37,14 @@ const About: React.FC = () => {
           coffee.
         </Paragraph>
         <Cta>
-          <span
+          <UnderlineAnimation
             onClick={() => scrollToSection("/contact", updateSection)}
-            style={{ color: "#a0cbd6", cursor: "pointer" }}
           >
-            Thanks for stopping by—take a look around and feel free to reach
-            out!
-          </span>
+            Thanks for stopping by—take a look around and feel free to{" "}
+            <strong>reach out!</strong>
+          </UnderlineAnimation>
         </Cta>
+
         <SocialLinks>
           <SocialIcon
             href="https://github.com/gitafaiman"
