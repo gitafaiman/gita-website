@@ -448,11 +448,102 @@ const UnderlineAnimation = styled.span`
     transform: scaleX(1);
   }
 `;
+const CarouselContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const CardWrapper = styled.div`
+  perspective: 1000px;
+`;
+
+const PortfolioCard = styled.div`
+  width: 300px;
+  height: 400px;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: rotateX(180deg);
+  }
+`;
+
+const CardFront = styled.div`
+  background: #333;
+  color: white;
+  border-radius: 12px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+`;
+
+const CardBack = styled.div`
+  background: #444;
+  color: white;
+  border-radius: 12px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotateX(180deg);
+`;
+
+const ProjectTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+const Description = styled.p`
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+`;
+
+const Button = styled.button`
+  background-color: #a0cbd6;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #8fb8c9;
+  }
+`;
+
 export {
   AboutCard,
   AboutContainer,
   AppContainer,
+  Button,
+  CardBack,
+  CardFront,
+  CardWrapper,
+  CarouselContainer,
   Cta,
+  Description,
   GifContainer,
   GlobalStyle,
   Heading,
@@ -467,7 +558,9 @@ export {
   NavbarTitle,
   PageContainer,
   Paragraph,
+  PortfolioCard,
   ProfilePic,
+  ProjectTitle,
   SectionWrapper,
   SocialIcon,
   SocialLinks,
