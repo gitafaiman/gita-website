@@ -1,6 +1,5 @@
 import React from "react";
 import useQuerySection from "../../hooks/useQuerySection";
-import scrollToSection from "../../utils/scrollToSection";
 import {
   Navbar,
   NavbarBrand,
@@ -22,13 +21,12 @@ const NavBar: React.FC<NavBarProps> = ({
   imageSrcPath,
   navItems,
 }) => {
-  const { getActiveSection, updateSection } = useQuerySection();
-  const activeSection = getActiveSection();
+  const { activeSection, updateQuery } = useQuerySection();
 
   return (
     <>
       <Navbar>
-        <NavbarBrand onClick={() => scrollToSection("/", updateSection)}>
+        <NavbarBrand onClick={() => updateQuery("home")}>
           <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} />
           <NavbarTitle>{brandName}</NavbarTitle>
         </NavbarBrand>
@@ -36,7 +34,9 @@ const NavBar: React.FC<NavBarProps> = ({
           {navItems.map((item, index) => (
             <NavbarButton
               key={index}
-              onClick={() => scrollToSection(item.path, updateSection)}
+              onClick={() =>
+                updateQuery(item.path === "/" ? "home" : item.path.slice(1))
+              }
               style={{
                 border:
                   activeSection ===

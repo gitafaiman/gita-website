@@ -4,6 +4,7 @@ const handleClickSection = (sectionId: string) => {
   const { updateSection } = useQuerySection();
   updateSection(sectionId);
 
+  // const element = document.getElementById(sectionId.slice(1));
   const element = document.getElementById(
     sectionId === "/" ? "home" : sectionId.slice(1)
   );

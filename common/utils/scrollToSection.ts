@@ -1,24 +1,16 @@
+import { NavigateFunction } from "react-router-dom";
+
 const scrollToSection = (
   sectionId: string,
-  updateSection: (section: string) => void
+  updateSection: (section: string) => void,
+  navigate: NavigateFunction
 ) => {
-  updateSection(sectionId === "/" ? "home" : sectionId.slice(1));
-
-  const element = document.getElementById(
-    sectionId === "/" ? "home" : sectionId.slice(1)
-  );
-
-  if (element) {
-    const navbarHeight = document.querySelector("header")?.offsetHeight || 0;
-    const elementPosition =
-      element.getBoundingClientRect().top + window.scrollY;
-    const offsetPosition = elementPosition - navbarHeight - 10;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
+  updateSection(sectionId);
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
   }
+  navigate(`/${sectionId}`);
 };
 
 export default scrollToSection;

@@ -74,12 +74,13 @@ const PageContainer = styled.div`
 const SectionWrapper = styled.section`
   width: 100%;
   max-width: 1200px;
-  padding: 60px 20px;
+  padding: 60px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  height: 100vh;
 
   &:first-of-type {
     padding-top: 0;
