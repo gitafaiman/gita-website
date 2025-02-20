@@ -7,10 +7,10 @@ import {
   SectionWrapper,
   TextContainer,
 } from "../../common/components/NavBar/styles";
+import useQuerySection from "../../common/hooks/useQuerySection";
 import About from "./About";
 import Contact from "./Contact";
 import Portfolio from "./Portfolio";
-import useQuerySection from "../../common/hooks/useQuerySection";
 
 const Home: React.FC = () => {
   const { activeSection } = useQuerySection();

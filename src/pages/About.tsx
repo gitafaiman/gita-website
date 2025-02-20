@@ -12,10 +12,9 @@ import {
   UnderlineAnimation,
 } from "../../common/components/NavBar/styles";
 import useQuerySection from "../../common/hooks/useQuerySection";
-import scrollToSection from "../../common/utils/scrollToSection";
 
 const About: React.FC = () => {
-  const { updateSection } = useQuerySection();
+  const { updateQuery } = useQuerySection();
 
   return (
     <AboutContainer>
@@ -38,7 +37,7 @@ const About: React.FC = () => {
         </Paragraph>
         <Cta>
           <UnderlineAnimation
-            onClick={() => scrollToSection("/contact", updateSection)}
+            onClick={() => updateQuery('contact')}
           >
             Thanks for stopping by—take a look around and feel free to{" "}
             <strong>reach out!</strong>
