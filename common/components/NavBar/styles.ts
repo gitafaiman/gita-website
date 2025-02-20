@@ -31,7 +31,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    overflow-x: hidden;
     height: 100%;
     width: 100%;
     background-color: #121212;
@@ -40,7 +39,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     max-width: 100vw;
-    overflow-x: hidden;
   }
 
   body, html {
@@ -566,5 +564,6 @@ export {
   SocialIcon,
   SocialLinks,
   TextContainer,
-  UnderlineAnimation,
+  UnderlineAnimation
 };
+
