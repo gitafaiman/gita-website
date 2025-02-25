@@ -7,10 +7,9 @@ const useQuerySection = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
   const isUserScrolling = useRef(false);
-  const isNavClick = useRef(false);
+
 // Extract section from URL on initial load and scroll to it
 useEffect(() => {
-  if (!isNavClick.current) return;
   const section = location.pathname.slice(1) || "home";
   setActiveSection(section);
 
@@ -21,7 +20,6 @@ useEffect(() => {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, 100);
-  isNavClick.current = false;
 }, [location.pathname]);
 
 console.log(window);

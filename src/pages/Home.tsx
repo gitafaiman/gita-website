@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import {
   GifContainer,
   HomeHeading,
@@ -14,16 +14,12 @@ import Portfolio from "./Portfolio";
 
 const Home: React.FC = () => {
   const { activeSection } = useQuerySection();
-  const isNavClick = useRef(false);
 
   useEffect(() => {
-    if (!isNavClick.current) return; // Prevent scroll if manually scrolling
-
     const element = document.getElementById(activeSection);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    isNavClick.current = false; // Reset after scrolling
   }, [activeSection]);
 
   return (
