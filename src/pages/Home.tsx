@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   GifContainer,
   HomeHeading,
@@ -7,21 +7,11 @@ import {
   SectionWrapper,
   TextContainer,
 } from "../../common/components/NavBar/styles";
-import useQuerySection from "../../common/hooks/useQuerySection";
 import About from "./About";
 import Contact from "./Contact";
 import Portfolio from "./Portfolio";
 
 const Home: React.FC = () => {
-  const { activeSection } = useQuerySection();
-
-  useEffect(() => {
-    const element = document.getElementById(activeSection);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [activeSection]);
-
   return (
     <PageContainer>
       <SectionWrapper id="home">

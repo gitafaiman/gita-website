@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import {
   AboutCard,
@@ -14,7 +14,14 @@ import {
 import useQuerySection from "../../common/hooks/useQuerySection";
 
 const About: React.FC = () => {
-  const { updateQuery } = useQuerySection();
+    const [isClicked, setIsClicked] = useState<boolean>(false);
+  const { updateQuery } = useQuerySection(isClicked);
+
+  const handleNavClick = (section: string) => {
+    setIsClicked(true);
+    updateQuery(section);
+    setTimeout(() => setIsClicked(false), 500);
+  };
 
   return (
     <AboutContainer>
@@ -37,7 +44,7 @@ const About: React.FC = () => {
         </Paragraph>
         <Cta>
           <UnderlineAnimation
-            onClick={() => updateQuery('contact')}
+            onClick={() => handleNavClick('contact')}
           >
             Thanks for stopping by—take a look around and feel free to{" "}
             <strong>reach out!</strong>
