@@ -1,50 +1,85 @@
 import styled from "styled-components";
 
-const CarouselContainer = styled.div`
+export const CarouselWrapper = styled.div`
+  width: 100%;
+  max-width: 800px; /* Adjusted max-width for a larger carousel */
+  margin: auto;
+`;
+
+export const CardContainer = styled.div`
+  perspective: 1000px;
   display: flex;
-  align-items: center;
   justify-content: center;
+`;
+
+export const Card = styled.div`
+  width: 100%; /* Full width of the slide */
+  height: 300px; /* Set a fixed height for consistency */
   position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-`;
-
-const CarouselWrapper = styled.div`
+  background: white; /* Keep background color white */
+  border: 2px solid #a0cbd6; /* Updated outline color */
+  border-radius: 10px;
+  overflow: hidden; /* Ensures no overflow from image */
   display: flex;
-  overflow: hidden;
-  width: 100%;
-`;
-
-const CardWrapper = styled.div<{ isActive: boolean }>`
-  flex: 0 0 100%;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  transform: ${(props) => (props.isActive ? "scale(1)" : "scale(0.9)")};
-  opacity: ${(props) => (props.isActive ? "1" : "0.5")};
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-`;
-
-const ArrowButton = styled.button`
-  background-color: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 2rem;
+  justify-content: center;
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1000;
-  &:hover {
-    color: #a0cbd6;
+
+  img {
+    width: 100%;
+    height: 80%; /* Adjust height of the image */
+    object-fit: cover;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
   }
-  &:first-of-type {
-    left: 0;
-  }
-  &:last-of-type {
-    right: 0;
+
+  p {
+    padding: 10px; /* Add padding for text */
+    text-align: center;
+    color: #333; /* Text color */
   }
 `;
 
-export { ArrowButton, CardWrapper, CarouselContainer, CarouselWrapper };
+
+export const CardFront = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white; /* Keep background color white */
+  border: 2px solid #a0cbd6; /* Updated outline color */
+  border-radius: 10px;
+  box-sizing: border-box; /* Ensure border is included in the element's total width and height */
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px; /* Optional: to match the card corners */
+    /* Removed margin */
+  }
+`;
+
+export const CardBack = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: #001f3f;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotateY(180deg);
+  border: 2px solid #a0cbd6; /* Updated outline color */
+  border-radius: 10px;
+  padding: 20px;
+
+  &:hover {
+    background: #003366;
+  }
+`;

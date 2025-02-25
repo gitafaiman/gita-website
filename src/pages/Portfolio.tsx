@@ -1,66 +1,45 @@
-import { useState } from "react";
-import {
-  Button,
-  CardBack,
-  CardFront,
-  CardWrapper,
-  CarouselContainer,
-  Description,
-  PortfolioCard,
-  ProjectTitle,
-} from "../../common/components/NavBar/styles";
+import React from "react";
+import Carousel from "../../common/components/Carousel";
+
 const projects = [
   {
-    title: "Project 1",
-    description: "Short description of Project 1",
-    link: "https://example.com/project1",
+    id: 1,
+    image: "/personal_web.png",
+    description: "My Personal Website: A showcase of my work, skills, and contact info.",
+    link: "https://gitafaiman.com",
   },
   {
-    title: "Project 2",
-    description: "Short description of Project 2",
-    link: "https://example.com/project2",
+    id: 2,
+    image: "/task_app.png",
+    description: "Taskify: A modern, intuitive task management application.",
+    link: "https://taskify.example.com",
   },
   {
-    title: "Project 3",
-    description: "Short description of Project 3",
-    link: "https://example.com/project3",
+    id: 3,
+    image: "/recipes.jpg",
+    description: "FoodieFinds: A restaurant discovery app with personalized recommendations.",
+    link: "https://foodiefinds.example.com",
+  },
+  {
+    id: 4,
+    image: "/fitness_app.png",
+    description: "FitTrack: A fitness tracking app with workout and nutrition plans.",
+    link: "https://fittrack.example.com",
+  },
+  {
+    id: 5,
+    image: "/movie_recs.png",
+    description: "CineMate: A movie recommendation app with AI-driven suggestions.",
+    link: "https://cinemate.example.com",
   },
 ];
 
-const Portfolio = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextProject = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
-    );
-  };
-
-  const handleCardClick = (link: string) => {
-    window.open(link, "_blank");
-  };
-
+const Portfolio: React.FC = () => {
   return (
-    <CarouselContainer>
-      <Button onClick={prevProject}>Prev</Button>
-      <CardWrapper>
-        <PortfolioCard
-          onClick={() => handleCardClick(projects[currentIndex].link)}
-        >
-          <CardFront>
-            <ProjectTitle>{projects[currentIndex].title}</ProjectTitle>
-          </CardFront>
-          <CardBack>
-            <Description>{projects[currentIndex].description}</Description>
-          </CardBack>
-        </PortfolioCard>
-      </CardWrapper>
-      <Button onClick={nextProject}>Next</Button>
-    </CarouselContainer>
+    <div>
+      <h2>My Projects</h2>
+      <Carousel projects={projects} />
+    </div>
   );
 };
 

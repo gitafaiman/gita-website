@@ -1,50 +1,57 @@
-import React, { useState } from "react";
-import {
-  ArrowButton,
-  CardWrapper,
-  CarouselContainer,
-  CarouselWrapper,
-} from "./styles";
+import React, { useRef } from "react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Card, CarouselWrapper } from "./styles";
 
-interface CarouselProps {
-  items: React.ReactNode[];
+interface Project {
+  id: number;
+  image: string;
+  description: string;
+  link: string;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ items }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+interface CarouselProps {
+  projects: Project[];
+}
 
-  const goToPrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? items.length - 1 : prevIndex - 1
-    );
+const Carousel: React.FC<CarouselProps> = ({ projects }) => {
+  const swiperRef = useRef<any>(null); // Create a ref to hold the swiper instance
+
+  const handleMouseEnter = () => {
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.stop(); // Stop autoplay on hover
+    }
   };
 
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === items.length - 1 ? 0 : prevIndex + 1
-    );
+  const handleMouseLeave = () => {
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.start(); // Restart autoplay when not hovering
+    }
   };
 
   return (
-    <CarouselContainer>
-      <ArrowButton onClick={goToPrev}>&lt;</ArrowButton>
-      <CarouselWrapper>
-        <div
-          style={{
-            display: "flex",
-            transform: `translateX(-${currentIndex * 100}%)`,
-            transition: "transform 0.3s ease-in-out",
-          }}
-        >
-          {items.map((item, index) => (
-            <CardWrapper key={index} isActive={index === currentIndex}>
-              {item}
-            </CardWrapper>
-          ))}
-        </div>
-      </CarouselWrapper>
-      <ArrowButton onClick={goToNext}>&gt;</ArrowButton>
-    </CarouselContainer>
+    <CarouselWrapper>
+      <Swiper
+        ref={swiperRef} // Attach the ref to the Swiper component
+        modules={[Autoplay, Pagination]}
+        slidesPerView={3} // Display 3 cards at a time
+        spaceBetween={30} // Optional: Add space between the slides
+        loop={true} // Enable infinite loop
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
+      >
+        {projects.map((project) => (
+          <SwiperSlide key={project.id}>
+            <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => window.open(project.link, "_blank")}>
+              <img src={project.image} alt="Project" />
+              <p>{project.description}</p>
+            </Card>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </CarouselWrapper>
   );
 };
 
