@@ -40,7 +40,7 @@ const About: React.FC = () => {
         <Paragraph>
           When I’m not coding, you’ll find me diving into new languages (both
           spoken and programming) or enjoying some downtime with a good book and
-          coffee.
+          matcha.
         </Paragraph>
         <Cta>
           <UnderlineAnimation

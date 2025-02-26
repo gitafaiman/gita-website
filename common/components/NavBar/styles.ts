@@ -33,7 +33,6 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     background-color: #191919;
     color: #ffffff;
-    min-height: 100%;
   }
 
   body {
@@ -52,7 +51,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #root {
-    min-height: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,41 +62,44 @@ const GlobalStyle = createGlobalStyle`
 
 
 const PageContainer = styled.div`
-  width: 100%;
-  overflow-x: visible;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
   padding: 0 5%;
   box-sizing: border-box;
 `;
 
 const SectionWrapper = styled.section`
   width: 100%;
-  padding: 80px 60px;
-  margin: 0 auto;
+  max-width: 1200px;
+  padding: 60px;
+  margin: 0 auto 60px; /* Add margin-bottom for spacing between sections */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: auto;
+  min-height: 100vh; /* Use min-height to allow content to define height */
 
   &:first-of-type {
     padding-top: 0;
+    margin-top: 0; /* Optional: Remove top margin for the first section */
   }
 
   @media (max-width: 768px) {
     padding: 50px 15px;
+    min-height: calc(100vh - 60px); /* Maintain a good height on smaller screens */
   }
 
   @media (max-width: 480px) {
     padding: 40px 10px;
+    min-height: calc(100vh - 50px);
   }
 `;
-
-
 
 const AppContainer = styled.div`
   background-color: #191919;
   color: #ffffff;
-  min-height: auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,9 +108,7 @@ const AppContainer = styled.div`
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  overflow: visible;
 `;
-
 
 const Navbar = styled.header`
   position: fixed;
