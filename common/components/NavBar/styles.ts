@@ -2,32 +2,30 @@ import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {
-  /* Hide scrollbar track */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  /* Scrollbar thumb (the draggable part) */
-  ::-webkit-scrollbar-thumb {
-    background: #333; /* Dark color */
-    border-radius: 10px;
-  }
-
-  /* Scrollbar track */
-  ::-webkit-scrollbar-track {
-    background: #191919; /* Slightly lighter than background */
-  }
-
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #333 #191919;
-  }
-    
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+
+    /* Scrollbar Styles */
+    /* WebKit Browsers (Chrome, Safari) */
+    ::-webkit-scrollbar {
+      width: 6px; /* Thinner scrollbar */
+      height: 6px; /* Thinner horizontal scrollbar */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(160, 203, 214, 0.9); /* Pill color */
+      border-radius: 50px; /* Pill shape */
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent; /* No visible track */
+    }
+
+    /* Firefox */
+    scrollbar-width: thin; /* Make it thin */
+    scrollbar-color: rgba(160, 203, 214, 0.9) transparent; /* Pill color with no track */
   }
 
   html, body {
@@ -39,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     max-width: 100vw;
-    overflow-x: hidden
+    overflow-x: hidden;
   }
 
   body, html {
@@ -48,9 +46,8 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
-     width: 100%;
+    width: 100%;
     height: 100%;
-
   }
 
   #root {
@@ -61,6 +58,8 @@ const GlobalStyle = createGlobalStyle`
     justify-content: flex-start;
   }
 `;
+
+
 
 const PageContainer = styled.div`
   width: 100%;
