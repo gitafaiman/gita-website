@@ -15,13 +15,13 @@ const GlobalStyle = createGlobalStyle`
 
   /* Scrollbar track */
   ::-webkit-scrollbar-track {
-    background: #121212; /* Slightly lighter than background */
+    background: #191919; /* Slightly lighter than background */
   }
 
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #333 #121212;
+    scrollbar-color: #333 #191919;
   }
     
     margin: 0;
@@ -33,12 +33,13 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     height: 100%;
     width: 100%;
-    background-color: #121212;
+    background-color: #191919;
     color: #ffffff;
   }
 
   body {
     max-width: 100vw;
+    overflow-x: hidden
   }
 
   body, html {
@@ -96,7 +97,7 @@ const SectionWrapper = styled.section`
 `;
 
 const AppContainer = styled.div`
-  background-color: #121212;
+  background-color: #191919;
   color: #ffffff;
   min-height: 100vh;
   display: flex;
@@ -265,7 +266,7 @@ const HomeSection = styled.section`
   justify-content: center;
   height: auto;
   padding: 20px;
-  background-color: #121212;
+  background-color: #191919;
   color: white;
   margin: 0 auto;
   text-align: center;
@@ -340,13 +341,13 @@ const AboutContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #121212;
+  background-color: #191919;
 `;
 
 const AboutCard = styled.div`
   max-width: 800px;
   width: 100%;
-  background: #1e1e1e;
+  background: #121212;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   padding: 2rem;

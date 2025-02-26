@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { NavBar } from "../common";
+import Footer from '../common/components/Footer';
 import { AppContainer } from "../common/components/NavBar/styles";
 import Home from "./pages/Home";
-
 const App: React.FC = () => {
   return (
     <AppContainer>
@@ -21,6 +21,7 @@ const App: React.FC = () => {
           />
           <Home />
         </div>
+          <Footer />
       </Router>
     </AppContainer>
   );
