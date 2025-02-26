@@ -2,84 +2,39 @@ import styled from "styled-components";
 
 export const CarouselWrapper = styled.div`
   width: 100%;
-  max-width: 800px; /* Adjusted max-width for a larger carousel */
+  max-width: 1500px;
   margin: auto;
+  display: flex;
 `;
 
-export const CardContainer = styled.div`
-  perspective: 1000px;
-  display: flex;
-  justify-content: center;
-`;
 
 export const Card = styled.div`
-  width: 100%; /* Full width of the slide */
-  height: 300px; /* Set a fixed height for consistency */
+  width: 400px; 
+  height: 500px; 
+  flex-shrink: 0;
   position: relative;
-  background: white; /* Keep background color white */
-  border: 2px solid #a0cbd6; /* Updated outline color */
-  border-radius: 10px;
-  overflow: hidden; /* Ensures no overflow from image */
+  background: #001f3f;
+  border: 2px solid #007bff;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
+  padding: 20px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  
   img {
-    width: 100%;
-    height: 80%; /* Adjust height of the image */
+    width: 90%;
+    height: 70%;
     object-fit: cover;
-    border-radius: 10px 10px 0 0; /* Rounded top corners */
+    border-radius: 10px;
   }
 
   p {
-    padding: 10px; /* Add padding for text */
+    padding: 15px;
     text-align: center;
-    color: #333; /* Text color */
-  }
-`;
-
-
-export const CardFront = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white; /* Keep background color white */
-  border: 2px solid #a0cbd6; /* Updated outline color */
-  border-radius: 10px;
-  box-sizing: border-box; /* Ensure border is included in the element's total width and height */
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5px; /* Optional: to match the card corners */
-    /* Removed margin */
-  }
-`;
-
-export const CardBack = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  background: #001f3f;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transform: rotateY(180deg);
-  border: 2px solid #a0cbd6; /* Updated outline color */
-  border-radius: 10px;
-  padding: 20px;
-
-  &:hover {
-    background: #003366;
+    color: white;
+    font-size: 18px;
   }
 `;

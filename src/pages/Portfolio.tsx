@@ -37,7 +37,7 @@ const projects = [
 const Portfolio: React.FC = () => {
   return (
     <div>
-      <h2>My Projects</h2>
+      <h2 style={{ padding: "50px" }}>My Projects</h2>
       <Carousel projects={projects} />
     </div>
   );
