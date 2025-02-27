@@ -1,85 +1,97 @@
-import React, { useState } from 'react';
+import emailjs from "@emailjs/browser";
+import { yupResolver } from "@hookform/resolvers/yup";
+import React, { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import * as yup from "yup";
+import Field from "../../common/components/Field";
+
+const schema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  phone: yup.string().matches(/^\d{10}$/, "Phone must be 10 digits"),
+  message: yup.string().required("Message cannot be empty"),
+});
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form Data Submitted:', formData);
-    alert('Thank you for reaching out! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+  const onSubmit = async (data: any) => {
+    if (!recaptchaToken) {
+      toast.error("Please verify that you're not a robot.");
+      return;
+    }
+
+    toast.info("Sending your message...");
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        { ...data, "g-recaptcha-response": recaptchaToken },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      toast.success("✅ Message sent successfully!");
+      reset();
+      setRecaptchaToken(null); // Reset captcha
+    } catch (error) {
+      toast.error("❌ Failed to send message. Try again.");
+      console.error("Email.js error:", error);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Contact Me</h1>
+    <section id="contact" className="py-10 px-5 bg-gray-100">
+      <h2 className="text-2xl font-bold text-center mb-6">Contact Me</h2>
+
       <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md"
+        onSubmit={handleSubmit(onSubmit)}
+        className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md"
       >
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        <Field label="Name" type="text" {...register("name")} />
+        {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+
+        <Field label="Email" type="email" {...register("email")} />
+        {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+
+        <Field label="Phone" type="text" {...register("phone")} />
+        {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
+
+        <Field label="Message" type="text" {...register("message")} />
+        {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
+
+        {/* Google reCAPTCHA */}
+        <div className="flex justify-center my-4">
+          <ReCAPTCHA
+            sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+            onChange={(token) => setRecaptchaToken(token)}
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Your Email"
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        <div className="mb-6">
-          <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Your Message"
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          ></textarea>
-        </div>
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Send Message
-          </button>
-        </div>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition"
+        >
+          {isSubmitting ? "Sending..." : "Send Message"}
+        </button>
       </form>
-    </div>
+
+      {/* Toast Notifications */}
+      <ToastContainer position="top-right" autoClose={3000} />
+    </section>
   );
 };
 

@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify';
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -37,7 +38,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     max-width: 100vw;
-    overflow-x: hidden;
   }
 
   body, html {
@@ -532,7 +532,24 @@ const Button = styled.button`
     background-color: #8fb8c9;
   }
 `;
+const CustomToastContainer = styled(ToastContainer)`
+  .Toastify__toast {
+    border-radius: 10px !important;
+    font-size: 1rem !important;
+  }
 
+  .Toastify__toast--success {
+    background-color: #4caf50 !important;
+  }
+
+  .Toastify__toast--error {
+    background-color: #f44336 !important;
+  }
+
+  .Toastify__toast--info {
+    background-color: #2196f3 !important;
+  }
+`;
 export {
   AboutCard,
   AboutContainer,
@@ -541,9 +558,7 @@ export {
   CardBack,
   CardFront,
   CardWrapper,
-  CarouselContainer,
-  Cta,
-  Description,
+  CarouselContainer, Cta, CustomToastContainer, Description,
   GifContainer,
   GlobalStyle,
   Heading,
