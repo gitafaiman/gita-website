@@ -1,35 +1,32 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FieldContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
+export const Label = styled.label`
+  display: block;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+`;
+
 export const Input = styled.input`
   width: 100%;
-  padding: 12px;
-  background-color: #191919;
-  border: 2px solid #4B6CEE;
+  padding: 10px;
+  border: 1px solid #d1d5db;
   border-radius: 9999px;
-  font-size: 1rem;
-  color: white;
-  transition: all 0.3s ease;
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-  }
+  outline: none;
+  transition: border 0.2s ease-in-out;
 
   &:focus {
-    outline: none;
-    border-color: #4B6CEE;
-  }
-
-  &.error {
-    border-color: rgb(247,1,247);
+    border-color: #3182ce;
+    box-shadow: 0 0 5px rgba(49, 130, 206, 0.5);
   }
 `;
 
 export const ErrorMessage = styled.p`
-  color: rgb(247,1,247);
+  color: #e53e3e;
   font-size: 0.875rem;
-  margin-top: 5px;
+  margin-top: 0.25rem;
 `;
