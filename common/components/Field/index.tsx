@@ -1,15 +1,21 @@
 import React, { forwardRef } from "react";
-import { FieldContainer, Input, Label } from "./styles";
+import { FieldContainer, Input, ErrorMessage } from "./styles";
 
 interface FieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  error?: string;
 }
 
-const Field = forwardRef<HTMLInputElement, FieldProps>(({ label, ...props }, ref) => {
+const Field = forwardRef<HTMLInputElement, FieldProps>(({ label, error, ...props }, ref) => {
   return (
     <FieldContainer>
-      <Label>{label}</Label>
-      <Input ref={ref} {...props} />
+      <Input
+        ref={ref}
+        placeholder={label}
+        className={error ? "error" : ""}
+        {...props}
+      />
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </FieldContainer>
   );
 });
