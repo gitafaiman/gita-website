@@ -305,7 +305,7 @@ const GifContainer = styled.div`
 const HomeHeading = styled.h1`
   font-size: 3rem;
   font-weight: bold;
-  text-align: left;
+  text-align: left
 
   @media (max-width: 1030px) {
     font-size: 2.5rem;
@@ -318,11 +318,10 @@ const HomeHeading = styled.h1`
 `;
 
 const TextContainer = styled.div`
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: left;
 
   h1 {
     margin-bottom: 20px;
