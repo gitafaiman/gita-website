@@ -194,18 +194,42 @@ const NavbarTitle = styled.span`
   }
 `;
 
+const MenuIcon = styled.div`
+  display: none;
+  cursor: pointer;
+  color: white;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
 const NavbarLinks = styled.nav`
   display: flex;
   gap: 0.5rem;
 
   @media (max-width: 768px) {
-    gap: 0.25rem;
-  }
-
-  @media (max-width: 420px) {
-    gap: 0.1rem;
+    display: none;
   }
 `;
+
+const MobileMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background: rgba(160, 203, 214, 0.9);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
 
 const NavbarButton = styled.button<{ isContact?: boolean }>`
   position: relative;
@@ -565,6 +589,8 @@ export {
   Heading,
   HomeHeading,
   HomeSection,
+  MenuIcon,
+  MobileMenu,
   Navbar,
   NavbarBrand,
   NavbarButton,

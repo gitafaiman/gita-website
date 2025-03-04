@@ -43,7 +43,6 @@ export const SwiperSlideStyled = styled(SwiperSlide)`
   text-align: center;
   font-size: 18px;
 
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;

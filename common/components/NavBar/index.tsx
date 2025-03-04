@@ -1,6 +1,9 @@
+import { Menu, X } from "lucide-react"; // Import close (X) icon
 import React, { useState } from "react";
 import useQuerySection from "../../hooks/useQuerySection";
 import {
+  MenuIcon,
+  MobileMenu,
   Navbar,
   NavbarBrand,
   NavbarButton,
@@ -22,13 +25,17 @@ const NavBar: React.FC<NavBarProps> = ({
   navItems,
 }) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { activeSection, updateQuery } = useQuerySection(isClicked);
 
   const handleNavClick = (section: string) => {
     setIsClicked(true);
     updateQuery(section);
-    setTimeout(() => setIsClicked(false), 500);
+    setTimeout(() => setIsClicked(false), 100);
+    setIsMenuOpen(false); // Close menu on link click
   };
+console.log(isMenuOpen);
+console.log(isClicked);
 
   return (
     <>
@@ -37,6 +44,13 @@ const NavBar: React.FC<NavBarProps> = ({
           <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} />
           <NavbarTitle>{brandName}</NavbarTitle>
         </NavbarBrand>
+
+        {/* Menu Icon for Mobile */}
+        <MenuIcon onClick={() => setIsMenuOpen((prev) => !prev)}>
+          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+        </MenuIcon>
+
+        {/* Desktop Navbar Links */}
         <NavbarLinks>
           {navItems.map((item, index) => {
             const section = item.path === "/" ? "home" : item.path.slice(1);
@@ -54,7 +68,29 @@ const NavBar: React.FC<NavBarProps> = ({
             );
           })}
         </NavbarLinks>
+      {/* Mobile Dropdown Menu */}
+      {isMenuOpen && (
+        <MobileMenu>
+          {navItems.map((item, index) => {
+            const section = item.path === "/" ? "home" : item.path.slice(1);
+
+            return (
+              <NavbarButton
+                key={index}
+                onClick={() => handleNavClick(section)}
+                style={{
+                  border: activeSection === section ? "2px solid white" : "none",
+                }}
+              >
+                {item.label}
+              </NavbarButton>
+            );
+          })}
+        </MobileMenu>
+      )}
       </Navbar>
+
+
       <NavbarPlaceholder />
     </>
   );
