@@ -112,36 +112,48 @@ const AppContainer = styled.div`
   max-width: 100%;
 `;
 
-const Navbar = styled.header`
+const Navbar = styled.header<{ $isMenuOpen: boolean }>`
   position: fixed;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 1rem);
   max-width: 1600px;
-  padding: 2rem 2.5rem;
+  padding: 1.5rem 2rem;
   background: linear-gradient(
     90deg,
     rgba(160, 203, 214, 0.9),
     rgba(184, 222, 210, 0.9)
   );
-
-  border-radius: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
+  border-radius: 75px;
 
-  @media (max-width: 1300px) {
-    padding: 1rem 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem;
     width: calc(100% - 3rem);
-  }
-  @media (max-width: 380px) {
-    padding: 0.5rem;
-    gap: 0.25rem;
+    max-height: ${({ $isMenuOpen }) => ($isMenuOpen ? "300px" : "80px")};
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    border-radius: ${({ $isMenuOpen }) => ($isMenuOpen ? "20px" : "50px")}; /* Keep rounded when collapsed */
   }
 `;
+
+
+
+
+const NavbarHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
 
 const NavbarPlaceholder = styled.div`
   height: 80px;
@@ -151,33 +163,16 @@ const NavbarPlaceholder = styled.div`
 const NavbarBrand = styled.div`
   display: flex;
   align-items: center;
-  position: relative;
-  padding-left: 100px;
   cursor: pointer;
-
-  @media (max-width: 768px) {
-    gap: 0.25rem;
-    padding-left: 70px;
-  }
 `;
 
 const NavbarLogo = styled.img`
   width: 100px;
   height: 100px;
-  position: absolute;
-  left: -10%;
-  top: 50%;
-  transform: translateY(-50%);
-  mask-image: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 1) 40%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 1) 40%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  margin-right: 1rem;
+  border-radius: 50%;
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
 
   @media (max-width: 768px) {
     width: 50px;
@@ -185,33 +180,40 @@ const NavbarLogo = styled.img`
   }
 `;
 
+
 const NavbarTitle = styled.span`
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: bold;
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
 `;
 
 const MenuIcon = styled.div`
-  display: none;
   cursor: pointer;
   color: white;
+  display: none;
 
   @media (max-width: 768px) {
     display: block;
   }
 `;
 
-const NavbarLinks = styled.nav`
+const NavbarLinks = styled.nav<{ $isMenuOpen: boolean }>`
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
 
   @media (max-width: 768px) {
-    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    display: ${(props) => (props.$isMenuOpen ? "flex" : "none")};
+    padding-top: 1rem;
   }
 `;
+
 
 const MobileMenu = styled.div`
   display: flex;
@@ -219,6 +221,8 @@ const MobileMenu = styled.div`
   position: absolute;
   top: 80px;
   right: 20px;
+left: 50%; 
+transform: translateX(-50%);
   background: rgba(160, 203, 214, 0.9);
   border-radius: 10px;
   padding: 1rem;
@@ -291,7 +295,7 @@ const HomeSection = styled.section`
   align-items: center;
   justify-content: center;
   height: auto;
-  padding: 20px;
+  padding: auto 20px;
   background-color: #191919;
   color: white;
   margin: 0 auto;
@@ -299,7 +303,7 @@ const HomeSection = styled.section`
 
   @media (max-width: 1030px) {
     flex-direction: column;
-    padding: 0 15px;
+    padding: auto 15px;
   }
 `;
 
@@ -594,6 +598,7 @@ export {
   Navbar,
   NavbarBrand,
   NavbarButton,
+  NavbarHeader,
   NavbarLinks,
   NavbarLogo,
   NavbarPlaceholder,

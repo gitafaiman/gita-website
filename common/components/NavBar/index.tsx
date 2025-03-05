@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import useQuerySection from "../../hooks/useQuerySection";
 import {
   MenuIcon,
-  MobileMenu,
   Navbar,
   NavbarBrand,
   NavbarButton,
+  NavbarHeader,
   NavbarLinks,
   NavbarLogo,
   NavbarPlaceholder,
-  NavbarTitle,
+  NavbarTitle
 } from "./styles";
 
 interface NavBarProps {
@@ -37,63 +37,45 @@ const NavBar: React.FC<NavBarProps> = ({
 console.log(isMenuOpen);
 console.log(isClicked);
 
-  return (
-    <>
-      <Navbar>
+return (
+  <>
+    <Navbar $isMenuOpen={isMenuOpen}>
+      {/* New Wrapper to Keep Brand and MenuIcon in One Row */}
+      <NavbarHeader>
         <NavbarBrand onClick={() => handleNavClick("home")}>
           <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} />
           <NavbarTitle>{brandName}</NavbarTitle>
         </NavbarBrand>
 
-        {/* Menu Icon for Mobile */}
+        {/* Menu Icon stays on the right */}
         <MenuIcon onClick={() => setIsMenuOpen((prev) => !prev)}>
           {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
         </MenuIcon>
+      </NavbarHeader>
 
-        {/* Desktop Navbar Links */}
-        <NavbarLinks>
-          {navItems.map((item, index) => {
-            const section = item.path === "/" ? "home" : item.path.slice(1);
+      {/* Navbar Links should appear below the header in mobile view */}
+      <NavbarLinks $isMenuOpen={isMenuOpen}>
+        {navItems.map((item, index) => {
+          const section = item.path === "/" ? "home" : item.path.slice(1);
 
-            return (
-              <NavbarButton
-                key={index}
-                onClick={() => handleNavClick(section)}
-                style={{
-                  border: activeSection === section ? "2px solid white" : "none",
-                }}
-              >
-                {item.label}
-              </NavbarButton>
-            );
-          })}
-        </NavbarLinks>
-      {/* Mobile Dropdown Menu */}
-      {isMenuOpen && (
-        <MobileMenu>
-          {navItems.map((item, index) => {
-            const section = item.path === "/" ? "home" : item.path.slice(1);
+          return (
+            <NavbarButton
+              key={index}
+              onClick={() => handleNavClick(section)}
+              style={{
+                border: activeSection === section ? "2px solid white" : "none",
+              }}
+            >
+              {item.label}
+            </NavbarButton>
+          );
+        })}
+      </NavbarLinks>
+    </Navbar>
 
-            return (
-              <NavbarButton
-                key={index}
-                onClick={() => handleNavClick(section)}
-                style={{
-                  border: activeSection === section ? "2px solid white" : "none",
-                }}
-              >
-                {item.label}
-              </NavbarButton>
-            );
-          })}
-        </MobileMenu>
-      )}
-      </Navbar>
-
-
-      <NavbarPlaceholder />
-    </>
-  );
+    <NavbarPlaceholder />
+  </>
+);
 };
 
 export default NavBar;
