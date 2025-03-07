@@ -26,6 +26,7 @@ const Home: React.FC = () => {
         </HomeSection>
       </SectionWrapper>
 
+      {/* <Skills/> */}
       <SectionWrapper id="about">
         <About />
       </SectionWrapper>
