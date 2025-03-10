@@ -1,5 +1,5 @@
-import { Menu, X } from "lucide-react"; // Import close (X) icon
-import React, { useState } from "react";
+import { Menu, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import useQuerySection from "../../hooks/useQuerySection";
 import {
   MenuIcon,
@@ -27,6 +27,25 @@ const NavBar: React.FC<NavBarProps> = ({
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { activeSection, updateQuery } = useQuerySection(isClicked);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the page has been scrolled more than 50px
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleNavClick = (section: string) => {
     setIsClicked(true);
@@ -39,12 +58,12 @@ console.log(isClicked);
 
 return (
   <>
-    <Navbar $isMenuOpen={isMenuOpen}>
+    <Navbar $isMenuOpen={isMenuOpen} $isScrolled={isScrolled}>
       {/* New Wrapper to Keep Brand and MenuIcon in One Row */}
       <NavbarHeader>
-        <NavbarBrand onClick={() => handleNavClick("home")}>
-          <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} />
-          <NavbarTitle>{brandName}</NavbarTitle>
+        <NavbarBrand $isScrolled={isScrolled} onClick={() => handleNavClick("home")}>
+          <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} $isScrolled={isScrolled}/>
+          <NavbarTitle $isScrolled={isScrolled}>{brandName}</NavbarTitle>
         </NavbarBrand>
 
         {/* Menu Icon stays on the right */}
@@ -54,12 +73,13 @@ return (
       </NavbarHeader>
 
       {/* Navbar Links should appear below the header in mobile view */}
-      <NavbarLinks $isMenuOpen={isMenuOpen}>
+      <NavbarLinks $isMenuOpen={isMenuOpen} $isScrolled={isScrolled}>
         {navItems.map((item, index) => {
           const section = item.path === "/" ? "home" : item.path.slice(1);
 
           return (
             <NavbarButton
+            $isScrolled={isScrolled}
               key={index}
               onClick={() => handleNavClick(section)}
               style={{
