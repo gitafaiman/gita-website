@@ -1,20 +1,33 @@
-// src/common/components/ErrorPage/index.tsx
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { ErrorPageContainer, ErrorText, Button } from "./styles";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ButtonContainer, ErrorMessage, ErrorPageContainer } from './styles';
 
 const ErrorPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const goBackHome = () => {
-    navigate("/", { replace: true });
+  const handleBackToHome = () => {
+    navigate('/'); // Navigate to the home page
   };
 
   return (
+    <div>
+      <img 
+        src="/coming_soon.gif" 
+        alt="Error GIF" 
+      />
     <ErrorPageContainer>
-      <ErrorText>Oops! This page does not exist.</ErrorText>
-      <Button onClick={goBackHome}>Go Back Home</Button>
+      {/* Adjusted the positioning of the GIF */}
+      
+      <ErrorMessage>
+        <h2>Oops! Page not found</h2>
+        <p>The page you're looking for might have been moved or doesn't exist.</p>
+      </ErrorMessage>
+      
+      <ButtonContainer>
+        <button onClick={handleBackToHome}>Go Back to Home</button>
+      </ButtonContainer>
     </ErrorPageContainer>
+    </div>
   );
 };
 
