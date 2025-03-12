@@ -11,7 +11,7 @@ const useQuerySection = (isClicked = false) => {
   useEffect(() => {
     const section = location.pathname.slice(1) || "home";
     setActiveSection(section);
-console.log(isClicked)
+
     if (isClicked) {
       setTimeout(() => {
         const element = document.getElementById(section);
@@ -31,9 +31,11 @@ console.log(isClicked)
 
   // Scroll listener to detect active section but NOT trigger auto-scroll
   useEffect(() => {
+    // Prevent scroll handler from firing when in '/error' path
+    if (location.pathname === "/error") return;
+
     const handleScroll = () => {
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-      console.log(isClicked)
 
       scrollTimeout.current = setTimeout(() => {
         if (!isClicked) { 
@@ -68,7 +70,7 @@ console.log(isClicked)
       window.removeEventListener("scroll", handleScroll);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
-  }, [activeSection, navigate, isClicked]);
+  }, [activeSection, navigate, isClicked, location.pathname]);
 
   return { activeSection, updateQuery };
 };

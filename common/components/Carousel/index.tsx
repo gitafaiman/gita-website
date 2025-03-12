@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -18,6 +19,7 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
   const swiperRef = useRef<any>(null);
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     if (swiperRef.current) {
@@ -29,6 +31,10 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
     if (swiperRef.current) {
       swiperRef.current.autoplay?.start();
     }
+  };
+
+  const handleCardClick = () => {
+    window.open("/error", "_blank"); // Open the error page in a new tab
   };
 
   return (
@@ -44,7 +50,11 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
       >
         {projects.map((project) => (
           <SwiperSlideStyled key={project.id}>
-            <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => window.open(project.link, "_blank")}>
+            <Card
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={handleCardClick /*() => window.open(project.link, "_blank")*/}
+            >
               <img src={project.image} alt="Project" />
               <p>{project.description}</p>
             </Card>
