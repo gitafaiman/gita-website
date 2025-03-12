@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import Carousel from "../../common/components/Carousel";
 
@@ -37,7 +38,17 @@ const projects = [
 const Portfolio: React.FC = () => {
   return (
     <div>
-      <h2 style={{ padding: "50px" }}>My Projects</h2>
+      {/* Animated Heading */}
+      <motion.h2
+        style={{ padding: "50px", textAlign: "center" }}
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ type: "spring", stiffness: 80, damping: 10, delay: 0.2 }}
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        My Projects
+      </motion.h2>
+
       <Carousel projects={projects} />
     </div>
   );
