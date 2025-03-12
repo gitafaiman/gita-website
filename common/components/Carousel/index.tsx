@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { useNavigate } from 'react-router-dom';
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -19,7 +18,6 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
   const swiperRef = useRef<any>(null);
-  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     if (swiperRef.current) {
