@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import React from "react";
 import {
   GifContainer,
@@ -12,18 +13,58 @@ import Contact from "./Contact";
 import Portfolio from "./Portfolio";
 
 const Home: React.FC = () => {
+  const paragraphText = "Explore my portfolio, learn about me, and get in touch.";
+  
   return (
     <PageContainer>
       <SectionWrapper id="home">
-        <HomeSection>
-          <GifContainer>
-            <img src="/home.gif" alt="Welcome GIF" />
-          </GifContainer>
+      <HomeSection>
+          {/* GIF Animation */}
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 100, damping: 10, delay: 0.2 }}
+            viewport={{ once: false, amount: 0.5 }} // Ensures animation re-triggers on scroll
+          >
+            <GifContainer>
+              <img src="/home.gif" alt="Welcome GIF" />
+            </GifContainer>
+          </motion.div>
+
+          {/* Text Container */}
           <TextContainer>
-            <HomeHeading>Welcome to Gita Faiman's Personal Website</HomeHeading>
-            <p>Explore my portfolio, learn about me, and get in touch.</p>
+            {/* Heading Animation */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 100, damping: 10, delay: 0.4 }}
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              <HomeHeading>Welcome to Gita Faiman's Personal Website</HomeHeading>
+            </motion.div>
+
+            {/* Paragraph Animation - Each Word Bounces */}
+            <motion.p 
+              style={{ display: "flex", flexWrap: "wrap" }} 
+            >
+              {paragraphText.split(" ").map((word, index) => (
+                <motion.span 
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    type: "spring", stiffness: 100, damping: 10, delay: 0.5 + index * 0.1 
+                  }}
+                  viewport={{ once: false, amount: 0.5 }}
+                  style={{ marginRight: "5px" }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.p>
           </TextContainer>
         </HomeSection>
+
       </SectionWrapper>
       <SectionWrapper id="about">
         <About />

@@ -8,14 +8,13 @@ export const CarouselWrapper = styled.div`
   display: flex;
 `;
 
-
 export const Card = styled.div`
   width: 300px; 
   height: 500px; 
   flex-shrink: 0;
   position: relative;
-  background: #001f3f;
-  border: 2px solid #007bff;
+  background: rgba(75, 108, 238, 0.2); /* More transparent #4b6cee background */
+  border: 2px solid #4b6cee; /* Solid border with #4b6cee */
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -42,19 +41,17 @@ export const Card = styled.div`
 export const SwiperSlideStyled = styled(SwiperSlide)`
   text-align: center;
   font-size: 18px;
-
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
- webkit-box-pack: center;
-ms-flex-pack: center;
- webkit-justify-content: center;
+  webkit-box-pack: center;
+  ms-flex-pack: center;
+  webkit-justify-content: center;
   justify-content: center;
-webkit-box-align: center;
-ms-flex-align: center;
-webkit-align-items: center;
+  webkit-box-align: center;
+  ms-flex-align: center;
+  webkit-align-items: center;
   align-items: center;
 }
 `;
-
