@@ -60,7 +60,7 @@ const Logo = styled.img`
   );
 
   @media (max-width: 768px) {
-    height: 120px;
+    height: 200px;
   }
 `;
 
