@@ -198,12 +198,7 @@ const NavbarLogo = styled.img<{ $isScrolled: boolean }>`
   @media (max-width: 768px) {
     width: 50px;
     height: 50px;
-    margin-right: 0;  /* Removes extra space */
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+      }
 `;
 
 
