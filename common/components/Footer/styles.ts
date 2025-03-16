@@ -20,16 +20,19 @@ const FooterContent = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1600px;
-  padding: 20px 60px;
+  max-width: 80%; /* Matches Divider width */
+  padding: 20px 0;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: column; /* Stack logo and links */
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Add spacing between elements */
     text-align: center;
-    padding: 20px 30px;
   }
 `;
+
+
 
 const Logo = styled.img`
   height: 10vw;
@@ -57,7 +60,7 @@ const Logo = styled.img`
   );
 
   @media (max-width: 768px) {
-    height: 80px;
+    height: 120px;
   }
 `;
 
@@ -66,7 +69,12 @@ const Logo = styled.img`
 const SocialLinks = styled.div`
   display: flex;
   gap: 15px;
-  margin-top: 20px;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    justify-content: center; /* Center align on small screens */
+  }
 `;
 
 const colorValue = 'rgba(195, 221, 228, 0.5)'; 
