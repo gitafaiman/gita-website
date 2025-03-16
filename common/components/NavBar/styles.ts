@@ -119,7 +119,7 @@ const Navbar = styled.header<{ $isMenuOpen: boolean; $isScrolled: boolean }>`
   transform: translateX(-50%);
   width: calc(100% - 1rem);
   max-width: 1600px;
-   padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   background: linear-gradient(
     90deg,
     rgba(160, 203, 214, 0.9),
@@ -131,25 +131,32 @@ const Navbar = styled.header<{ $isMenuOpen: boolean; $isScrolled: boolean }>`
   align-items: center;
   z-index: 1000;
   border-radius: 75px;
-  transition: all 0.3s ease;
-
+  transition: padding 0.3s ease-in-out, 
+              max-height 0.3s ease-in-out, 
+              box-shadow 0.3s ease-in-out;
+object-fit: conatain;
   ${({ $isScrolled }) =>
     $isScrolled &&
     `
-      padding: 0.5rem 1.5rem;  /* Shrink padding */
-      max-height: 60px;  /* Shrink height */
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a stronger shadow when scrolled */
+      padding: 0.5rem 1.5rem;
+      max-height: 90px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     `}
 
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 0.75rem;
     width: calc(100% - 3rem);
-    max-height: ${({ $isMenuOpen }) => ($isMenuOpen ? "350px" : "70px")};
+    max-height: 350px;
     overflow: hidden;
-    border-radius: ${({ $isMenuOpen }) => ($isMenuOpen ? "20px" : "50px")};
+    border-radius: 35px;
+    transition: padding 0.3s ease-in-out, 
+                max-height 0.3s ease-in-out, 
+                border-radius 0.3s ease-in-out;
   }
 `;
+
+
 
 
 const NavbarHeader = styled.div`
@@ -169,34 +176,31 @@ const NavbarBrand = styled.div<{$isScrolled: boolean}>`
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition for shrinking */
-
-  ${({ $isScrolled }) =>
-    $isScrolled &&
-    `
-      transform: scale(0.7); /* Shrink logo and brand when scrolled */
-    `}
+  transition: transform 0.3s ease-in-out;
 `;
 
-const NavbarLogo = styled.img<{$isScrolled: boolean}>`
+const NavbarLogo = styled.img<{ $isScrolled: boolean }>`
   width: 100px;
   height: 100px;
   margin-right: 1rem;
   border-radius: 50%;
   mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
   -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
-transition: all 0.3s ease;
-  @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-  }
+  transition: all 0.3s ease;
+  
   ${({ $isScrolled }) =>
     $isScrolled &&
     `
-      width: 80px;
-      height: 80px;
+      mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
+      -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
     `}
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+      }
 `;
+
 
 
 const NavbarTitle = styled.span<{$isScrolled: boolean}>`
@@ -207,11 +211,6 @@ transition: all 0.3s ease;
   @media (max-width: 768px) {
     font-size: 1rem;
   }
-  ${({ $isScrolled }) =>
-    $isScrolled &&
-    `
-      font-size: 2rem;
-    `}
 `;
 
 const MenuIcon = styled.div`
@@ -229,11 +228,6 @@ const NavbarLinks = styled.nav<{ $isMenuOpen: boolean; $isScrolled: boolean}>`
   display: flex;
   gap: 1rem;
 transition: all 0.3s ease;
-${({ $isScrolled }) =>
-  $isScrolled &&
-  `
-    font-size: 0.9rem; /* Shrink nav links when scrolled */
-  `}
   @media (max-width: 768px) {
     flex-direction: column;
     width: 100%;
@@ -275,11 +269,6 @@ const NavbarButton = styled.button<{ isContact?: boolean; $isScrolled: boolean }
   font-size: 1.125rem;
   overflow: hidden;
   transition: color 0.3s ease, background-color 0.3s ease;
-  ${({ $isScrolled }) =>
-    $isScrolled &&
-    `
-      font-size: 0.9rem;
-    `}
   &:hover {
     background-color: #a0cbd6;
     color: #ffffff;

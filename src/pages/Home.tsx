@@ -15,17 +15,12 @@ import ErrorPage from './ErrorPage';
 import Portfolio from "./Portfolio";
 
 const Home: React.FC = () => {
-  const location = useLocation(); // Get the current URL path
+  const location = useLocation();
   const paragraphText = "Explore my portfolio, learn about me, and get in touch.";
 
-  // Conditionally render ErrorPage if the path is "/error"
   if (location.pathname === "/error") {
     return (
-      <PageContainer>
-        <SectionWrapper>
           <ErrorPage />
-        </SectionWrapper>
-      </PageContainer>
     );
   }
 
@@ -33,21 +28,17 @@ const Home: React.FC = () => {
     <PageContainer>
       <SectionWrapper id="home">
         <HomeSection>
-          {/* GIF Animation */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 10, delay: 0.2 }}
-            viewport={{ once: false, amount: 0.5 }} // Ensures animation re-triggers on scroll
+            viewport={{ once: false, amount: 0.5 }}
           >
             <GifContainer>
               <img src="/home.gif" alt="Welcome GIF" />
             </GifContainer>
           </motion.div>
-
-          {/* Text Container */}
           <TextContainer>
-            {/* Heading Animation */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -56,8 +47,6 @@ const Home: React.FC = () => {
             >
               <HomeHeading>Welcome to Gita Faiman's Personal Website</HomeHeading>
             </motion.div>
-
-            {/* Paragraph Animation - Each Word Bounces */}
             <motion.p style={{ display: "flex", flexWrap: "wrap" }}>
               {paragraphText.split(" ").map((word, index) => (
                 <motion.span
