@@ -134,7 +134,7 @@ const Navbar = styled.header<{ $isMenuOpen: boolean; $isScrolled: boolean }>`
   transition: padding 0.3s ease-in-out, 
               max-height 0.3s ease-in-out, 
               box-shadow 0.3s ease-in-out;
-
+object-fit: conatain;
   ${({ $isScrolled }) =>
     $isScrolled &&
     `
@@ -179,25 +179,33 @@ const NavbarBrand = styled.div<{$isScrolled: boolean}>`
   transition: transform 0.3s ease-in-out;
 `;
 
-const NavbarLogo = styled.img<{$isScrolled: boolean}>`
+const NavbarLogo = styled.img<{ $isScrolled: boolean }>`
   width: 100px;
   height: 100px;
   margin-right: 1rem;
   border-radius: 50%;
   mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
   -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
-transition: all 0.3s ease;
-${({ $isScrolled }) =>
-  $isScrolled &&
-  `
-  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
-  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
-  `}
+  transition: all 0.3s ease;
+  
+  ${({ $isScrolled }) =>
+    $isScrolled &&
+    `
+      mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
+      -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
+    `}
+  
   @media (max-width: 768px) {
     width: 50px;
     height: 50px;
+    margin-right: 0;  /* Removes extra space */
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 `;
+
 
 
 const NavbarTitle = styled.span<{$isScrolled: boolean}>`
