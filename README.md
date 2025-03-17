@@ -23,9 +23,6 @@ Welcome to my personal website! 🚀 This project showcases my skills as a web d
 - **Forms**: Email.js + reCAPTCHA  
 - **Deployment**: Netlify  
 
-## 📷 Screenshots  
-_(Add static images or more GIFs here if needed)_  
-
 ## 📜 License  
 This project is open-source. Feel free to explore and contribute!  
 
