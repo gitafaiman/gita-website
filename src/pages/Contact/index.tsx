@@ -99,11 +99,9 @@ const Contact: React.FC = () => {
         if (recaptchaRef.current) recaptchaRef.current.reset();
       } catch (error) {
         toast.error("❌ Failed to send message. Try again.");
-        console.error("Email.js error:", error);
       }
     } catch (error) {
       toast.error("❌ Failed to verify reCAPTCHA. Please try again.");
-      console.error("reCAPTCHA verification error:", error);
     }
   };
 
@@ -112,7 +110,6 @@ const Contact: React.FC = () => {
       <ContactContainer>
         <div className="left-section">
           <ContactText>
-            {/* Animate each line separately */}
             {textLines.map((line, index) => (
               <motion.h1
                 key={index}
@@ -129,8 +126,6 @@ const Contact: React.FC = () => {
                 {line}
               </motion.h1>
             ))}
-
-            {/* Animate each word separately */}
             <motion.h4>
               {words[0].split(" ").map((word, index) => (
                 <motion.span
@@ -152,9 +147,8 @@ const Contact: React.FC = () => {
             </motion.h4>
           </ContactText>
         </div>
-
         <ContactRight>
-        <motion.div
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{

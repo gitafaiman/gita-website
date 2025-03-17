@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 interface SliderProps {
   items: React.ReactNode[];
   speed?: number;
-  direction?: 'left' | 'right'; // New prop for controlling direction
+  direction?: 'left' | 'right';
 }
 
 const SliderContainer = styled.div`
@@ -52,8 +52,7 @@ const Slider: React.FC<SliderProps> = ({ items, speed = 10, direction = 'left' }
   const [loopItems, setLoopItems] = useState<React.ReactNode[]>([]);
 
   useEffect(() => {
-    // Ensure continuous looping by duplicating the items
-    const repeatedItems = [...items, ...items]; // Duplicate array to avoid gaps
+    const repeatedItems = [...items, ...items];
     setLoopItems(repeatedItems);
   }, [items]);
 

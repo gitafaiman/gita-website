@@ -26,7 +26,6 @@ const About: React.FC = () => {
 
   return (
     <AboutContainer>
-      {/* AboutCard Bouncing In */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +33,6 @@ const About: React.FC = () => {
         viewport={{ once: false, amount: 0.3 }}
       >
         <AboutCard>
-          {/* Profile Picture */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -43,8 +41,6 @@ const About: React.FC = () => {
           >
             <ProfilePic src="/profile.jpg" alt="Gita Faiman" />
           </motion.div>
-
-          {/* Heading Animation */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,9 +49,7 @@ const About: React.FC = () => {
           >
             <Heading>Hi! I’m Gita Faiman</Heading>
           </motion.div>
-
-          {/* Paragraphs Revealing Sequentially */}
-          {[  
+          {[
             "I’m the developer behind this website. A passionate full-stack developer, always exploring new ways to bring creativity and functionality together through code.",
             "From crafting clean designs to solving tricky problems, I love the challenge of turning ideas into interactive experiences.",
             "When I’m not coding, you’ll find me diving into new languages (both spoken and programming) or enjoying some downtime with a good book and matcha."
@@ -70,8 +64,6 @@ const About: React.FC = () => {
               <Paragraph>{text}</Paragraph>
             </motion.div>
           ))}
-
-          {/* CTA Button with Underline Animation */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -85,8 +77,6 @@ const About: React.FC = () => {
               </UnderlineAnimation>
             </Cta>
           </motion.div>
-
-          {/* Social Links Fading In */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

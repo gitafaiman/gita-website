@@ -32,17 +32,17 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
   };
 
   const handleCardClick = () => {
-    window.open("/error", "_blank"); // Open the error page in a new tab
+    window.open("/error", "_blank");
   };
 
   return (
     <CarouselWrapper>
       <Swiper
-        ref={swiperRef} // Attach the ref to the Swiper component
+        ref={swiperRef}
         modules={[Autoplay, Pagination]}
-        slidesPerView={3} // Display 3 cards at a time
-        spaceBetween={30} // Optional: Add space between the slides
-        loop={true} // Enable infinite loop
+        slidesPerView={3}
+        spaceBetween={30}
+        loop={true}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
       >

@@ -6,12 +6,12 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px 50px; /* Extra padding at the bottom */
+  padding: 40px 20px 50px; 
   background-color: #191919;
   color: #ffffff;
   text-align: center;
   position: relative;
-  overflow: visible; /* Ensure nothing gets cut off */
+  overflow: visible;
 `;
 
 
@@ -20,14 +20,14 @@ const FooterContent = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 80%; /* Matches Divider width */
+  max-width: 80%;
   padding: 20px 0;
 
   @media (max-width: 768px) {
-    flex-direction: column; /* Stack logo and links */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px; /* Add spacing between elements */
+    gap: 20px;
     text-align: center;
   }
 `;
@@ -36,27 +36,27 @@ const FooterContent = styled.div`
 
 const Logo = styled.img`
   height: 10vw;
-  border-radius: 50%; /* Adjust this value based on your logo shape */
+  border-radius: 50%;
   background: linear-gradient(
     to right,
-    rgba(25, 25, 25, 0) 0%, /* Transparent */
-    rgba(25, 25, 25, 1) 20%, /* Matches background color */
-    rgba(25, 25, 25, 1) 80%, /* Matches background color */
-    rgba(25, 25, 25, 0) 100%  /* Transparent */
+    rgba(25, 25, 25, 0) 0%,
+    rgba(25, 25, 25, 1) 20%,
+    rgba(25, 25, 25, 1) 80%,
+    rgba(25, 25, 25, 0) 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
-    rgba(25, 25, 25, 0) 0%, /* Transparent */
-    rgba(25, 25, 25, 1) 20%, /* Matches background color */
-    rgba(25, 25, 25, 1) 80%, /* Matches background color */
-    rgba(25, 25, 25, 0) 100%  /* Transparent */
+    rgba(25, 25, 25, 0) 0%,
+    rgba(25, 25, 25, 1) 20%,
+    rgba(25, 25, 25, 1) 80%,
+    rgba(25, 25, 25, 0) 100%
   );
   mask-image: linear-gradient(
     to right,
-    rgba(25, 25, 25, 0) 0%, /* Transparent */
-    rgba(25, 25, 25, 1) 20%, /* Matches background color */
-    rgba(25, 25, 25, 1) 80%, /* Matches background color */
-    rgba(25, 25, 25, 0) 100%  /* Transparent */
+    rgba(25, 25, 25, 0) 0%,
+    rgba(25, 25, 25, 1) 20%,
+    rgba(25, 25, 25, 1) 80%,
+    rgba(25, 25, 25, 0) 100% 
   );
 
   @media (max-width: 768px) {
@@ -73,7 +73,7 @@ const SocialLinks = styled.div`
   justify-content: flex-start;
 
   @media (max-width: 768px) {
-    justify-content: center; /* Center align on small screens */
+    justify-content: center;
   }
 `;
 
@@ -98,11 +98,11 @@ const SocialIcon = styled.a`
 const Divider = styled.hr`
   width: 100%;
   max-width: 80%;
-  display: block; /* Ensures it appears */
+  display: block;
   border: none;
-  border-top: 1px solid ${colorValue}; /* Using standardized color value */
-  margin: 15px 0; /* Increase margin */
-  opacity: 1; /* Ensure it's fully visible */
+  border-top: 1px solid ${colorValue};
+  margin: 15px 0;
+  opacity: 1;
 `;
 
 const CopyrightText = styled.p`
@@ -112,8 +112,8 @@ const CopyrightText = styled.p`
   width: 100%;
   text-align: center;
   padding: 10px;
-  color: ${colorValue}; /* Using standardized color value */
-  line-height: 1.5; /* Adjust line height for spacing between lines */
+  color: ${colorValue};
+  line-height: 1.5;
 `;
 
 

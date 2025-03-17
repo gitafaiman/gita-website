@@ -8,25 +8,24 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
 
-    /* Scrollbar Styles */
     /* WebKit Browsers (Chrome, Safari) */
     ::-webkit-scrollbar {
-      width: 6px; /* Thinner scrollbar */
-      height: 6px; /* Thinner horizontal scrollbar */
+      width: 6px;
+      height: 6px;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: rgba(160, 203, 214, 0.9); /* Pill color */
-      border-radius: 50px; /* Pill shape */
+      background: rgba(160, 203, 214, 0.9);
+      border-radius: 50px;
     }
 
     ::-webkit-scrollbar-track {
-      background: transparent; /* No visible track */
+      background: transparent;
     }
 
     /* Firefox */
-    scrollbar-width: thin; /* Make it thin */
-    scrollbar-color: rgba(160, 203, 214, 0.9) transparent; /* Pill color with no track */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(160, 203, 214, 0.9) transparent;
   }
 
   html, body {
@@ -75,21 +74,21 @@ const SectionWrapper = styled.section`
   width: 100%;
   max-width: 1200px;
   padding: 60px;
-  margin: 0 auto 60px; /* Add margin-bottom for spacing between sections */
+  margin: 0 auto 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 100vh; /* Use min-height to allow content to define height */
+  min-height: 100vh;
 
   &:first-of-type {
     padding-top: 0;
-    margin-top: 0; /* Optional: Remove top margin for the first section */
+    margin-top: 0;
   }
 
   @media (max-width: 768px) {
     padding: 50px 15px;
-    min-height: calc(100vh - 60px); /* Maintain a good height on smaller screens */
+    min-height: calc(100vh - 60px);
   }
 
   @media (max-width: 480px) {
@@ -410,7 +409,7 @@ const AboutCard = styled.div`
 
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 30px 15px rgba(160, 203, 214, 0.6); /* Glowing shadow effect */
+    box-shadow: 0 0 30px 15px rgba(160, 203, 214, 0.6);
   }
 
   @media (max-width: 768px) {

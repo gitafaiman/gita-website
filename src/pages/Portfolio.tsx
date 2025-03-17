@@ -38,7 +38,6 @@ const projects = [
 const Portfolio: React.FC = () => {
   return (
     <div>
-      {/* Animated Heading */}
       <motion.h2
         style={{ padding: "50px", textAlign: "center" }}
         initial={{ opacity: 0, x: -50 }}
@@ -48,7 +47,6 @@ const Portfolio: React.FC = () => {
       >
         My Projects
       </motion.h2>
-
       <Carousel projects={projects} />
     </div>
   );

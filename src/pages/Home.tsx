@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import React from "react";
-import { useLocation } from "react-router-dom"; // Import useLocation
+import { useLocation } from "react-router-dom";
 import {
   GifContainer,
   HomeHeading,
@@ -11,7 +11,7 @@ import {
 } from "../../common/components/NavBar/styles";
 import About from "./About";
 import Contact from "./Contact";
-import ErrorPage from './ErrorPage';
+import ErrorPage from "./ErrorPage";
 import Portfolio from "./Portfolio";
 
 const Home: React.FC = () => {
@@ -19,9 +19,7 @@ const Home: React.FC = () => {
   const paragraphText = "Explore my portfolio, learn about me, and get in touch.";
 
   if (location.pathname === "/error") {
-    return (
-          <ErrorPage />
-    );
+    return <ErrorPage />;
   }
 
   return (

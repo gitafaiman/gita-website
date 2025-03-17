@@ -31,7 +31,7 @@ export const GifContainer = styled.div`
     object-position: center top;
 
     @media (max-width: 760px) {
-      height: 500px; // Even more cropped on smaller screens
+      height: 500px;
     }
   }
 `;
