@@ -17,6 +17,7 @@ import {
   FormHeading,
   SendButton
 } from "./styles";
+import { CustomToastContainer } from '../../styles';
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -191,7 +192,7 @@ const Contact: React.FC = () => {
         </ContactRight>
       </ContactContainer>
 
-      <ToastContainer position="top-right" autoClose={3000} />
+      <CustomToastContainer position="top-right" autoClose={3000} />
     </ContactSection>
   );
 };

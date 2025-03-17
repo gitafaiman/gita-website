@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PageContainer, SectionWrapper } from '../../../common/components/NavBar/styles';
+import { PageContainer } from '../../styles';
+import { SectionWrapper } from '../Home/styles';
 import { ButtonContainer, ErrorMessage, ErrorPageContainer, GifContainer } from './styles';
 
 const ErrorPage: React.FC = () => {
