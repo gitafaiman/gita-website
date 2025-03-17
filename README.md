@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# 🌐 Personal Portfolio Website  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Website Preview](https://private-user-images.githubusercontent.com/111671370/423630432-3d188e21-ba50-4d9f-9887-2cf9dfc460fb.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIyMzg0OTUsIm5iZiI6MTc0MjIzODE5NSwicGF0aCI6Ii8xMTE2NzEzNzAvNDIzNjMwNDMyLTNkMTg4ZTIxLWJhNTAtNGQ5Zi05ODg3LTJjZjlkZmM0NjBmYi5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMzE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDMxN1QxOTAzMTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jOTRiOTFmY2Q0NGI5NjdiMTQ3ODc1NjBiMDkzNTFhZTAyM2E0ZmQ2MWJlNmQ1NTAxMWVkZGFlOWE2ZjA3OTQ0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.7jZxXnEfJzE1-QQJMLF_wSwhRFMUe6ghUZFrINV9D18)  
 
-Currently, two official plugins are available:
+Welcome to my personal website! 🚀 This project showcases my skills as a web developer and UX designer through a sleek, interactive, and fully responsive portfolio.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔥 Features  
+- **Modern Tech Stack**: Built with **React** and **TypeScript**  
+- **Interactive Animations**: Powered by **Framer Motion**  
+- **Dynamic Carousel**: Implemented with **Swiper.js**  
+- **Contact Form**: Integrated with **Email.js**, protected by **reCAPTCHA**  
+- **Fully Responsive**: Optimized for all screen sizes  
+- **Deployed on Netlify**: Fast and secure hosting  
 
-## Expanding the ESLint configuration
+## 🖥️ Live Demo  
+🔗 **[Visit the Website](https://gita-faiman.netlify.app/)**  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Tech Stack  
+- **Frontend**: React, TypeScript  
+- **Styling**: Styled-components  
+- **Animations**: Framer Motion  
+- **Carousel**: Swiper.js  
+- **Forms**: Email.js + reCAPTCHA  
+- **Deployment**: Netlify  
 
-- Configure the top-level `parserOptions` property like this:
+## 📷 Screenshots  
+_(Add static images or more GIFs here if needed)_  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 📜 License  
+This project is open-source. Feel free to explore and contribute!  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+⭐️ If you like this project, consider starring it on GitHub!  
