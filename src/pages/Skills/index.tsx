@@ -10,7 +10,7 @@ import {
   faReact,
   faYarn,
 } from '@fortawesome/free-brands-svg-icons';
-import { faDatabase } from '@fortawesome/free-solid-svg-icons'; // Placeholder for database icons
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Slider } from '../../../common';
@@ -35,10 +35,7 @@ const Skills: React.FC = () => {
 
   return (
     <div>
-      {/* Slider for languages and frameworks moving to the left */}
       <Slider items={languagesFrameworks} direction="left" />
-
-      {/* Slider for tools and libraries moving to the right */}
       <Slider items={toolsAndLibraries} direction="right" />
     </div>
   );

@@ -7,7 +7,6 @@ const useQuerySection = (isClicked = false) => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // Update section based on URL, but only scroll if a navbar link was clicked
   useEffect(() => {
     const section = location.pathname.slice(1) || "home";
     setActiveSection(section);
@@ -22,23 +21,20 @@ const useQuerySection = (isClicked = false) => {
     }
   }, [location.pathname, isClicked]);
 
-  // Function to update URL
   const updateQuery = useCallback((section: string) => {
     const newPath = section === "home" ? "/" : `/${section}`;
     navigate(newPath, { replace: true });
     setActiveSection(section);
   }, [navigate]);
 
-  // Scroll listener to detect active section but NOT trigger auto-scroll
   useEffect(() => {
-    // Prevent scroll handler from firing when in '/error' path
     if (location.pathname === "/error") return;
 
     const handleScroll = () => {
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
 
       scrollTimeout.current = setTimeout(() => {
-        if (!isClicked) { 
+        if (!isClicked) {
           const sections = ["home", "about", "portfolio", "contact"];
           let closestSection = "home";
           let minDistance = window.innerHeight;

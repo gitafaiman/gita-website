@@ -31,7 +31,6 @@ const NavBar: React.FC<NavBarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if the page has been scrolled more than 50px
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
@@ -40,8 +39,6 @@ const NavBar: React.FC<NavBarProps> = ({
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -51,51 +48,46 @@ const NavBar: React.FC<NavBarProps> = ({
     setIsClicked(true);
     updateQuery(section);
     setTimeout(() => setIsClicked(false), 100);
-    setIsMenuOpen(false); // Close menu on link click
+    setIsMenuOpen(false);
   };
-console.log(isMenuOpen);
-console.log(isClicked);
 
-return (
-  <>
-    <Navbar $isMenuOpen={isMenuOpen} $isScrolled={isScrolled}>
-      {/* New Wrapper to Keep Brand and MenuIcon in One Row */}
-      <NavbarHeader>
-        <NavbarBrand $isScrolled={isScrolled} onClick={() => handleNavClick("home")}>
-          <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} $isScrolled={isScrolled}/>
-          <NavbarTitle $isScrolled={isScrolled}>{brandName}</NavbarTitle>
-        </NavbarBrand>
+  return (
+    <>
+      <Navbar $isMenuOpen={isMenuOpen} $isScrolled={isScrolled}>
+        <NavbarHeader>
+          <NavbarBrand $isScrolled={isScrolled} onClick={() => handleNavClick("home")}>
+            <NavbarLogo src={imageSrcPath} alt={`${brandName} logo`} $isScrolled={isScrolled} />
+            <NavbarTitle $isScrolled={isScrolled}>{brandName}</NavbarTitle>
+          </NavbarBrand>
 
-        {/* Menu Icon stays on the right */}
-        <MenuIcon onClick={() => setIsMenuOpen((prev) => !prev)}>
-          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
-        </MenuIcon>
-      </NavbarHeader>
+          <MenuIcon onClick={() => setIsMenuOpen((prev) => !prev)}>
+            {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+          </MenuIcon>
+        </NavbarHeader>
 
-      {/* Navbar Links should appear below the header in mobile view */}
-      <NavbarLinks $isMenuOpen={isMenuOpen} $isScrolled={isScrolled}>
-        {navItems.map((item, index) => {
-          const section = item.path === "/" ? "home" : item.path.slice(1);
+        <NavbarLinks $isMenuOpen={isMenuOpen} $isScrolled={isScrolled}>
+          {navItems.map((item, index) => {
+            const section = item.path === "/" ? "home" : item.path.slice(1);
 
-          return (
-            <NavbarButton
-            $isScrolled={isScrolled}
-              key={index}
-              onClick={() => handleNavClick(section)}
-              style={{
-                border: activeSection === section ? "2px solid white" : "none",
-              }}
-            >
-              {item.label}
-            </NavbarButton>
-          );
-        })}
-      </NavbarLinks>
-    </Navbar>
+            return (
+              <NavbarButton
+                $isScrolled={isScrolled}
+                key={index}
+                onClick={() => handleNavClick(section)}
+                style={{
+                  border: activeSection === section ? "2px solid white" : "none",
+                }}
+              >
+                {item.label}
+              </NavbarButton>
+            );
+          })}
+        </NavbarLinks>
+      </Navbar>
 
-    <NavbarPlaceholder />
-  </>
-);
+      <NavbarPlaceholder />
+    </>
+  );
 };
 
 export default NavBar;

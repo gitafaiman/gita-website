@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SwiperSlide } from 'swiper/react';
+import { SwiperSlide } from "swiper/react";
 
 export const CarouselWrapper = styled.div`
   width: 100%;
@@ -9,12 +9,12 @@ export const CarouselWrapper = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 300px; 
-  height: 500px; 
+  width: 300px;
+  height: 500px;
   flex-shrink: 0;
   position: relative;
-  background: rgba(75, 108, 238, 0.2); /* More transparent #4b6cee background */
-  border: 2px solid #4b6cee; /* Solid border with #4b6cee */
+  background: rgba(75, 108, 238, 0.2);
+  border: 2px solid #4b6cee;
   border-radius: 15px;
   display: flex;
   flex-direction: column;

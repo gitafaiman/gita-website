@@ -1,14 +1,15 @@
 import { motion } from "motion/react";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PageContainer, SectionWrapper } from '../../../common/components/NavBar/styles';
+import { PageContainer } from '../../styles';
+import { SectionWrapper } from '../Home/styles';
 import { ButtonContainer, ErrorMessage, ErrorPageContainer, GifContainer } from './styles';
 
 const ErrorPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleBackToHome = () => {
-    navigate('/'); // Navigate to the home page
+    navigate('/');
   };
   const paragraphText = "The page you're looking for might have been moved or doesn't exist."
   return (
@@ -21,7 +22,6 @@ const ErrorPage: React.FC = () => {
             transition={{ type: "spring", stiffness: 100, damping: 10, delay: 0.2 }}
             viewport={{ once: false, amount: 0.5 }}
           >
-
             <GifContainer>
               <img src="/coming_soon.gif" alt="Comming Soon" />
             </GifContainer>
