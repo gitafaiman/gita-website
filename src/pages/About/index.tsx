@@ -1,9 +1,19 @@
-import { motion } from 'framer-motion';
-import React, { useState } from 'react';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-import useQuerySection from '../../../common/hooks/useQuerySection';
-import { SocialIcon, SocialLinks } from '../../styles';
-import { AboutCard, AboutContainer, Cta, Heading, Paragraph, ProfilePic, UnderlineAnimation } from './styles';
+import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import useQuerySection from "../../../common/hooks/useQuerySection";
+import { SocialIcon, SocialLinks } from "../../styles";
+import {
+  AboutCard,
+  AboutContainer,
+  Cta,
+  Heading,
+  Paragraph,
+  ProfilePic,
+  ResumeLink,
+  UnderlineAnimation,
+} from "./styles";
 
 const About: React.FC = () => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -35,7 +45,12 @@ const About: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 10, delay: 0.6 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.6,
+            }}
             viewport={{ once: false, amount: 0.3 }}
           >
             <Heading>Hi! I’m Gita Faiman</Heading>
@@ -43,7 +58,7 @@ const About: React.FC = () => {
           {[
             "I’m the developer behind this website. A passionate full-stack developer, always exploring new ways to bring creativity and functionality together through code.",
             "From crafting clean designs to solving tricky problems, I love the challenge of turning ideas into interactive experiences.",
-            "When I’m not coding, you’ll find me diving into new languages (both spoken and programming) or enjoying some downtime with a good book and matcha."
+            "When I’m not coding, you’ll find me diving into new languages (both spoken and programming) or enjoying some downtime with a good book and matcha.",
           ].map((text, index) => (
             <motion.div
               key={index}
@@ -74,6 +89,12 @@ const About: React.FC = () => {
             transition={{ duration: 0.5, delay: 1.6 }}
             viewport={{ once: false, amount: 0.3 }}
           >
+            <ResumeLink>
+              <a href="/Gita Faiman Resume.pdf" target="_blank">
+                View My Resume
+                <FaArrowUpRightFromSquare size={20} />
+              </a>
+            </ResumeLink>
             <SocialLinks>
               <SocialIcon
                 href="https://github.com/gitafaiman"

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const AboutContainer = styled.div`
   display: flex;
@@ -86,5 +86,56 @@ export const UnderlineAnimation = styled.span`
 
   &:hover:after {
     transform: scaleX(1);
+  }
+`;
+
+export const ResumeLink = styled.div`
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+
+  a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid #a0cbd6;
+    border-radius: 30px;
+    color: #a0cbd6;
+    font-weight: 600;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    &:hover {
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: #a0cbd6;
+      z-index: -1;
+      transition: width 0.4s ease-in-out;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover svg {
+      transform: translateX(4px);
+    }
   }
 `;
