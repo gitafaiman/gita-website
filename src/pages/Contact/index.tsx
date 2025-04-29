@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
 import Field from "../../../common/components/Field";
+import { CustomToastContainer } from "../../styles";
 import {
   ContactContainer,
   ContactForm,
@@ -15,9 +16,8 @@ import {
   ContactSection,
   ContactText,
   FormHeading,
-  SendButton
+  SendButton,
 } from "./styles";
-import { CustomToastContainer } from '../../styles';
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -26,10 +26,7 @@ const schema = yup.object().shape({
   message: yup.string().required("Message cannot be empty"),
 });
 
-const textLines = [
-  "Let’s chat.",
-  "Tell me about your project.",
-];
+const textLines = ["Let’s chat.", "Tell me about your project."];
 
 const words = ["Let’s create something together✨"];
 
@@ -55,14 +52,21 @@ const Contact: React.FC = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  type ContactFormData = {
+    name: string;
+    email: string;
+    message: string;
+  };
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: ContactFormData) => {
     if (!recaptchaToken) {
       toast.error("Please verify that you're not a robot.");
       return;
     }
 
-    const recaptchaVerifyUrl = `https://recaptchaenterprise.googleapis.com/v1/projects/gita-faiman-webs-1740695756545/assessments?key=${import.meta.env.VITE_RECAPTCHA_API_KEY}`;
+    const recaptchaVerifyUrl = `https://recaptchaenterprise.googleapis.com/v1/projects/gita-faiman-webs-1740695756545/assessments?key=${
+      import.meta.env.VITE_RECAPTCHA_API_KEY
+    }`;
 
     try {
       const verificationResponse = await fetch(recaptchaVerifyUrl, {
@@ -98,10 +102,10 @@ const Contact: React.FC = () => {
         setRecaptchaToken(null);
 
         if (recaptchaRef.current) recaptchaRef.current.reset();
-      } catch (error) {
+      } catch {
         toast.error("❌ Failed to send message. Try again.");
       }
-    } catch (error) {
+    } catch {
       toast.error("❌ Failed to verify reCAPTCHA. Please try again.");
     }
   };
@@ -169,10 +173,30 @@ const Contact: React.FC = () => {
             viewport={{ once: false, amount: 0.3 }}
           >
             <ContactForm onSubmit={handleSubmit(onSubmit)}>
-              <Field label="Name *" type="text" {...register("name")} error={errors.name?.message} />
-              <Field label="Email *" type="email" {...register("email")} error={errors.email?.message} />
-              <Field label="Phone" type="text" {...register("phone")} error={errors.phone?.message} />
-              <Field label="Message *" type="text" {...register("message")} error={errors.message?.message} />
+              <Field
+                label="Name *"
+                type="text"
+                {...register("name")}
+                error={errors.name?.message}
+              />
+              <Field
+                label="Email *"
+                type="email"
+                {...register("email")}
+                error={errors.email?.message}
+              />
+              <Field
+                label="Phone"
+                type="text"
+                {...register("phone")}
+                error={errors.phone?.message}
+              />
+              <Field
+                label="Message *"
+                type="text"
+                {...register("message")}
+                error={errors.message?.message}
+              />
 
               {!isMobile && (
                 <div className="d-flex justify-content-center my-4">
